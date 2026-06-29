@@ -1,212 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Pijon | Behavioral Anti-Cheat for Modern Games</title>
 
-    <meta name="description"
-          content="Pijon helps game developers detect unfair play through behavioral analysis instead of traditional anti-cheat signatures.">
+    <meta name="description" content="Pijon helps game studios detect unfair play through behavioral analysis, explainable reports, and developer-friendly moderation tools.">
 
     <link rel="stylesheet" href="styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Namdhinggo:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header>
-
+<header class="site-header">
     <div class="container nav">
-
-        <div class="logo">
-
+        <a class="brand" href="#">
             <img src="assets/logo.png" alt="Pijon logo">
+            <span>pijon</span>
+        </a>
 
-            <span>Pijon</span>
-
-        </div>
-
-        <nav>
-
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
-
-            <a class="button secondary" href="mailto:hello@pijon.net">
-                Contact
-            </a>
-
+        <nav class="nav-links">
+            <a href="#product">Product</a>
+            <a href="#how">How it works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="mailto:hello@pijon.net">Contact</a>
         </nav>
 
+        <a class="nav-cta" href="mailto:hello@pijon.net">Get early access</a>
     </div>
-
 </header>
 
+<main>
+
 <section class="hero">
-
-    <div class="container hero-content">
-
-        <div class="hero-text">
-
-            <p class="eyebrow">
-                Behavioral Anti-Cheat
-            </p>
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">Behavioral anti-cheat</p>
 
             <h1>
-                Fair play starts with better detection.
+                See the player.<br>
+                <span>Not the cheat.</span>
             </h1>
 
-            <p class="description">
-
-                Pijon helps game studios identify cheating through
-                behavioral analysis instead of traditional signature-based
-                detection.
-
-                Built for mobile.
-                Affordable for independent developers.
-
+            <p class="hero-text">
+                Pijon helps game studios detect unfair play through behavioral analysis.
+                Get clear, explainable insights so you can protect legitimate players
+                without relying on invasive or black-box systems.
             </p>
 
-            <div class="hero-buttons">
-
-                <a class="button primary"
-                   href="mailto:hello@pijon.net">
-
-                    Get in touch
-
-                </a>
-
-                <a class="button secondary"
-                   href="#features">
-
-                    Learn more
-
-                </a>
-
+            <div class="hero-actions">
+                <a class="button primary" href="mailto:hello@pijon.net">Get early access</a>
+                <a class="button secondary" href="#how">See how it works</a>
             </div>
 
+            <div class="studio-note">
+                <p>Built for indie and mid-sized studios</p>
+                <div class="studio-list">
+                    <span>Mobile FPS</span>
+                    <span>Competitive PvP</span>
+                    <span>Live-service games</span>
+                </div>
+            </div>
         </div>
 
-        <div class="hero-image">
+        <div class="dashboard-card" aria-label="Pijon dashboard preview">
+            <div class="dashboard-sidebar">
+                <div class="mini-logo">pijon</div>
+                <span class="active">Overview</span>
+                <span>Players</span>
+                <span>Sessions</span>
+                <span>Alerts</span>
+                <span>Reports</span>
+            </div>
 
-            <img src="assets/mascot.png"
-                 alt="Pijon mascot">
+            <div class="dashboard-main">
+                <div class="dashboard-top">
+                    <h2>Overview</h2>
+                    <span>Live demo</span>
+                </div>
 
+                <div class="metric-grid">
+                    <div class="metric">
+                        <p>Flagged players</p>
+                        <strong>128</strong>
+                        <span>+18%</span>
+                    </div>
+
+                    <div class="metric">
+                        <p>Sessions analyzed</p>
+                        <strong>24.8k</strong>
+                        <span>+12%</span>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-line"></div>
+                </div>
+
+                <div class="alert-table">
+                    <div class="table-row table-head">
+                        <span>Player</span>
+                        <span>Reason</span>
+                        <span>Confidence</span>
+                    </div>
+
+                    <div class="table-row">
+                        <span>Player_9241</span>
+                        <span>Aim pattern</span>
+                        <strong>98%</strong>
+                    </div>
+
+                    <div class="table-row">
+                        <span>Player_5418</span>
+                        <span>Vision cues</span>
+                        <strong>95%</strong>
+                    </div>
+
+                    <div class="table-row">
+                        <span>Player_2301</span>
+                        <span>Movement</span>
+                        <strong>89%</strong>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
-
 </section>
 
-<section id="features" class="features">
-
-    <div class="container">
-
-        <h2>
-            Built for modern games.
-        </h2>
-
-        <div class="feature-grid">
-
-            <div class="card">
-
-                <h3>Behavioral Analysis</h3>
-
-                <p>
-
-                    Detect suspicious gameplay patterns instead of relying on
-                    known cheat signatures.
-
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Developer Reports</h3>
-
-                <p>
-
-                    Clear explanations and confidence scores instead of
-                    black-box decisions.
-
-                </p>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Made for Indie Studios</h3>
-
-                <p>
-
-                    Enterprise-inspired technology with pricing designed for
-                    smaller development teams.
-
-                </p>
-
-            </div>
-
+<section class="trust">
+    <div class="container trust-grid">
+        <div>
+            <strong>Fairer games</strong>
+            <p>Remove unfair advantages and protect legitimate players.</p>
         </div>
-
-    </div>
-
-</section>
-
-<section id="about" class="about">
-
-    <div class="container">
-
-        <h2>
-            A smarter approach to anti-cheat.
-        </h2>
-
-        <p>
-
-            Traditional anti-cheat solutions focus on detecting cheat
-            software.
-
-            Pijon focuses on detecting impossible behavior.
-
-            By analyzing gameplay patterns over time, developers gain
-            meaningful insights while staying in control of moderation
-            decisions.
-
-        </p>
-
-    </div>
-
-</section>
-
-<footer>
-
-    <div class="container footer">
 
         <div>
-
-            <strong>Pijon</strong>
-
-            <p>
-                Behavioral anti-cheat for modern games.
-            </p>
-
+            <strong>Clear insights</strong>
+            <p>Understand what happened with confidence scores and reports.</p>
         </div>
 
-        <p>
-
-            © 2026 Pijon
-
-        </p>
-
+        <div>
+            <strong>Built for you</strong>
+            <p>Affordable, scalable, and designed for smaller studios.</p>
+        </div>
     </div>
+</section>
 
+<section id="product" class="section">
+    <div class="container split">
+        <div class="section-copy">
+            <p class="eyebrow">Focus on what matters</p>
+            <h2>Behavior over signatures.</h2>
+            <p>
+                Traditional anti-cheat looks for known tools. Pijon looks for unnatural
+                behavior across aim, movement, awareness, consistency, and match context.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <h3>Harder to bypass</h3>
+                <p>Behavior is difficult to fake consistently across many matches.</p>
+            </article>
+
+            <article class="feature-card">
+                <h3>Fewer false positives</h3>
+                <p>Context-aware analysis helps separate outliers from real abuse.</p>
+            </article>
+
+            <article class="feature-card">
+                <h3>Explainable reports</h3>
+                <p>Every flag includes evidence developers can review and trust.</p>
+            </article>
+
+            <article class="feature-card">
+                <h3>Works with your stack</h3>
+                <p>Use Pijon alongside your existing moderation workflow.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="how" class="section how">
+    <div class="container">
+        <p class="eyebrow center">How it works</p>
+        <h2 class="center">Simple. Transparent. Effective.</h2>
+
+        <div class="steps">
+            <div class="step">
+                <span>1</span>
+                <h3>Data collection</h3>
+                <p>Collect lightweight in-game telemetry through an SDK.</p>
+            </div>
+
+            <div class="step">
+                <span>2</span>
+                <h3>Behavior analysis</h3>
+                <p>Analyze patterns, context, and consistency over time.</p>
+            </div>
+
+            <div class="step">
+                <span>3</span>
+                <h3>Confidence scoring</h3>
+                <p>Score suspicious behavior with clear key indicators.</p>
+            </div>
+
+            <div class="step">
+                <span>4</span>
+                <h3>Developer report</h3>
+                <p>Review readable reports with supporting evidence.</p>
+            </div>
+
+            <div class="step">
+                <span>5</span>
+                <h3>Take action</h3>
+                <p>You stay in control of moderation decisions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="cta-section">
+    <div class="container cta">
+        <div>
+            <h2>Ready to build fairer games?</h2>
+            <p>Join the waitlist and be the first to know when Pijon launches.</p>
+        </div>
+
+        <a class="button primary" href="mailto:hello@pijon.net">Get early access</a>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <a class="brand footer-brand" href="#">
+                <img src="assets/logo.png" alt="Pijon logo">
+                <span>pijon</span>
+            </a>
+            <p>Behavioral anti-cheat infrastructure for modern multiplayer games.</p>
+        </div>
+
+        <div>
+            <strong>Product</strong>
+            <a href="#product">Features</a>
+            <a href="#how">How it works</a>
+            <a href="#pricing">Pricing</a>
+        </div>
+
+        <div>
+            <strong>Company</strong>
+            <a href="mailto:hello@pijon.net">Contact</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <p class="copyright">© 2026 Pijon. All rights reserved.</p>
+    </div>
 </footer>
 
 <script src="script.js"></script>
