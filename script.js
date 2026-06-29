@@ -1,13 +1,7 @@
-// ==========================================================
-// PIJON
-// script.js
-// Small polish: navbar state + entrance animations
-// ==========================================================
-
-const header = document.querySelector("header");
+const header = document.querySelector(".site-header");
 
 function updateHeader() {
-    if (window.scrollY > 24) {
+    if (window.scrollY > 16) {
         header.classList.add("scrolled");
     } else {
         header.classList.remove("scrolled");
@@ -17,14 +11,11 @@ function updateHeader() {
 updateHeader();
 window.addEventListener("scroll", updateHeader);
 
-
-// Fade elements in when they enter the screen
-
-const animatedElements = document.querySelectorAll(
-    ".hero-text, .hero-image, .card, .about .container"
+const revealElements = document.querySelectorAll(
+    ".hero-copy, .dashboard-card, .trust-grid div, .section-copy, .feature-card, .step, .cta"
 );
 
-animatedElements.forEach((element) => {
+revealElements.forEach((element) => {
     element.classList.add("reveal");
 });
 
@@ -33,14 +24,15 @@ const observer = new IntersectionObserver(
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
             }
         });
     },
     {
-        threshold: 0.15
+        threshold: 0.12
     }
 );
 
-animatedElements.forEach((element) => {
+revealElements.forEach((element) => {
     observer.observe(element);
 });
