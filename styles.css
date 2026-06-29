@@ -668,3 +668,19 @@ header.scrolled {
         scroll-behavior: auto !important;
     }
 }
+
+
+/* ==========================================================
+   Script Animation Support
+========================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: .7s ease;
+}
