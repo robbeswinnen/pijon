@@ -453,30 +453,28 @@ img {
   align-items: center;
   column-gap: 12px;
   display: grid;
-  grid-template-columns: 32px auto auto;
-  grid-template-rows: auto auto;
+  grid-template-columns: 32px auto;
 }
 
 .stat-item img {
   grid-column: 1;
-  grid-row: 1 / 3;
   height: 32px;
   width: 32px;
 }
 
 .stat-item > div {
-  display: contents;
+  display: grid;
+  gap: 3px;
 }
 
 .stat-item > div span {
-  grid-column: 2 / 4;
-  grid-row: 1;
+  white-space: nowrap;
 }
 
-.stat-item > div strong {
-  align-self: center;
-  grid-column: 2;
-  grid-row: 2;
+.stat-item .stat-value {
+  align-items: center;
+  display: flex;
+  gap: 10px;
 }
 
 :root[data-theme="light"] .stat-item img {
@@ -498,22 +496,16 @@ img {
 
 .stat-item .delta {
   align-items: center;
-  align-self: center;
   background: var(--stats-pill);
   border-radius: 32px;
   color: var(--stats-text);
   display: inline-flex;
   font-size: 12px;
-  gap: 5px;
-  grid-column: 3;
-  grid-row: 2;
-  height: 20px;
+  gap: 2px;
+  height: 18px;
   justify-content: center;
-  justify-self: start;
   line-height: 1;
-  margin-left: 10px;
-  min-width: 64px;
-  padding: 0 11px 0 7px;
+  padding: 0 7px 0 4px;
   white-space: nowrap;
 }
 
@@ -522,12 +514,11 @@ img {
   color: #2bff76;
   display: inline-flex;
   font-size: 16px;
-  height: 16px;
+  height: 14px;
   justify-content: center;
   line-height: 1;
-  margin-left: -2px;
   overflow: hidden;
-  width: 16px;
+  width: 14px;
 }
 
 .stat-item .delta i::before {
@@ -1367,12 +1358,11 @@ main {
   }
 
   .stat-item {
-    grid-template-columns: 32px auto max-content;
+    grid-template-columns: 32px auto;
   }
 
-  .delta {
-    justify-self: start;
-    position: static;
+  .stat-item .stat-value {
+    justify-content: flex-start;
   }
 
   .release-pill {
