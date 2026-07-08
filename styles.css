@@ -2029,6 +2029,7 @@ main {
   );
   background: #190700;
   height: 100svh;
+  height: 100dvh;
   min-height: 0;
   overflow: hidden;
 }
@@ -2076,6 +2077,7 @@ main {
   background: #190700;
   color: #ffffff;
   height: 100svh;
+  height: 100dvh;
   min-height: 0;
   overflow: hidden;
   padding: 80px 0 0;
@@ -2096,6 +2098,7 @@ main {
   gap: 7vw;
   grid-template-columns: minmax(360px, 0.86fr) minmax(520px, 1.14fr);
   height: calc(100svh - 80px);
+  height: calc(100dvh - 80px);
   margin: 0 auto;
   max-width: 1480px;
   padding: 4.5vh 0 4vh;
@@ -2330,26 +2333,30 @@ main {
 .premium-feature-grid {
   display: grid;
   flex: 1;
-  gap: 12px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(3, minmax(0, 1fr));
   min-height: 0;
+  overflow: hidden;
 }
 
 .premium-switcher {
+  background: rgba(32, 8, 0, 0.48);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
   display: grid;
-  gap: 14px;
+  gap: 4px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 34px;
   max-width: 520px;
+  padding: 4px;
 }
 
 .premium-switcher button {
   align-items: center;
-  background: #ffffff;
+  background: transparent;
   border: 0;
   border-radius: 6px;
-  color: #202020;
+  color: rgba(255, 255, 255, 0.74);
   cursor: pointer;
   display: inline-flex;
   font-family: inherit;
@@ -2360,17 +2367,21 @@ main {
   justify-content: center;
   padding: 0 18px;
   transition:
+    background-color 180ms ease,
     box-shadow 180ms ease,
     color 180ms ease,
     transform 180ms ease;
 }
 
 .premium-switcher button:hover,
-.premium-switcher button:focus-visible,
+.premium-switcher button:focus-visible {
+  color: #ffffff;
+}
+
 .premium-switcher button.is-active {
-  box-shadow: 0 14px 28px rgba(30, 4, 0, 0.24);
-  color: #d64f00;
-  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(30, 4, 0, 0.2);
+  color: #7d2600;
 }
 
 .premium-view {
@@ -2391,31 +2402,31 @@ main {
 .premium-plan-grid {
   display: grid;
   flex: 1;
-  gap: 12px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   min-height: 0;
 }
 
 .premium-plan {
-  background: #282828;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
   color: #ffffff;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 46px minmax(78px, 0.62fr) minmax(128px, 0.9fr) minmax(120px, 0.95fr) auto;
   min-width: 0;
-  padding: 22px 18px 18px;
+  padding: 14px 0;
   position: relative;
   transition:
-    border-color 200ms ease,
-    box-shadow 200ms ease,
-    transform 200ms ease;
+    background-color 200ms ease,
+    padding 200ms ease;
 }
 
 .premium-plan:hover {
-  border-color: rgba(255, 147, 0, 0.42);
-  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
-  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.035);
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .premium-plan > i {
@@ -2431,15 +2442,15 @@ main {
 }
 
 .premium-plan-featured {
-  border-color: #ff9300;
+  background: rgba(255, 147, 0, 0.07);
+  box-shadow: inset 2px 0 0 #ff9300;
+  margin: 0 -14px;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
 .premium-plan-featured::before {
-  background: #ff9300;
-  content: "";
-  height: 4px;
-  inset: 0 0 auto;
-  position: absolute;
+  display: none;
 }
 
 .premium-plan-featured > i {
@@ -2448,20 +2459,21 @@ main {
 }
 
 .premium-plan h3 {
-  font-size: 22px;
-  margin: 18px 0 4px;
+  font-size: 20px;
+  line-height: 1.1;
+  margin: 0;
 }
 
 .premium-price {
   align-items: baseline;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 4px;
-  margin: 7px 0 11px;
+  margin: 0;
 }
 
 .premium-price span {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 600;
   line-height: 1;
 }
@@ -2475,6 +2487,7 @@ main {
   color: #c9c9c9;
   font-size: 12px;
   font-weight: 400;
+  line-height: 1.3;
 }
 
 .premium-plan > a {
@@ -2487,9 +2500,9 @@ main {
   font-weight: 600;
   gap: 6px;
   justify-content: center;
-  margin-top: auto;
+  margin: 0;
   min-height: 42px;
-  padding: 0 10px;
+  padding: 0 15px;
   transition:
     background-color 180ms ease,
     box-shadow 180ms ease,
@@ -2519,19 +2532,21 @@ main {
 
 .premium-feature {
   align-items: center;
-  background: #282828;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
+  background: transparent;
+  border: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
   color: #ffffff;
   cursor: pointer;
   display: flex;
   font-family: inherit;
   font-size: 15px;
   font-weight: 500;
-  gap: 13px;
+  gap: 14px;
   min-height: 0;
   overflow: hidden;
-  padding: 14px;
+  padding: 18px;
   position: relative;
   text-align: left;
   transition:
@@ -2539,6 +2554,14 @@ main {
     border-color 200ms ease,
     box-shadow 200ms ease,
     transform 200ms ease;
+}
+
+.premium-feature:nth-child(-n + 2) {
+  border-top: 0;
+}
+
+.premium-feature:nth-child(odd) {
+  border-left: 0;
 }
 
 .premium-feature::after {
@@ -2557,10 +2580,9 @@ main {
 .premium-feature:hover,
 .premium-feature:focus-visible,
 .premium-feature.is-active {
-  background: #303030;
-  border-color: rgba(255, 147, 0, 0.5);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
-  transform: translateY(-2px);
+  background: rgba(255, 147, 0, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(255, 147, 0, 0.28);
+  transform: none;
 }
 
 .premium-feature:hover::after,
@@ -3202,7 +3224,8 @@ main {
     grid-template-columns: 1fr;
     grid-template-rows: auto minmax(0, 1fr);
     height: calc(100svh - 72px);
-    padding: 16px 0;
+    height: calc(100dvh - 72px);
+    padding: 14px 0 max(14px, env(safe-area-inset-bottom));
     width: calc(100% - 32px);
   }
 
@@ -3218,7 +3241,7 @@ main {
   }
 
   .premium-switcher {
-    gap: 8px;
+    gap: 4px;
     margin-top: 12px;
     max-width: none;
   }
@@ -3250,6 +3273,7 @@ main {
   .pricing-panel {
     height: auto;
     min-height: 0;
+    overflow: hidden;
     padding: 17px;
   }
 
@@ -3307,46 +3331,65 @@ main {
   }
 
   .premium-feature-grid {
-    gap: 7px;
+    gap: 0;
   }
 
   .premium-feature {
-    font-size: 12px;
-    gap: 8px;
-    padding: 8px;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 13px;
+    gap: 7px;
+    justify-content: center;
+    padding: 10px;
   }
 
   .premium-feature > i {
-    font-size: 18px;
-    height: 34px;
-    width: 34px;
+    font-size: 17px;
+    height: 30px;
+    width: 30px;
   }
 
   .premium-plan-grid {
-    gap: 6px;
+    gap: 0;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
   }
 
   .premium-plan {
-    padding: 12px 8px 9px;
+    gap: 4px 10px;
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    padding: 8px 0;
   }
 
   .premium-plan > i {
     font-size: 17px;
-    height: 32px;
-    width: 32px;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    height: 34px;
+    width: 34px;
   }
 
   .premium-plan h3 {
+    align-self: end;
     font-size: 15px;
-    margin: 9px 0 2px;
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
   }
 
   .premium-price {
-    margin: 3px 0 6px;
+    align-self: start;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
   }
 
   .premium-price span {
-    font-size: 19px;
+    font-size: 18px;
+  }
+
+  .premium-price small {
+    font-size: 9px;
   }
 
   .premium-plan > strong {
@@ -3354,9 +3397,33 @@ main {
   }
 
   .premium-plan > a {
-    font-size: 10px;
+    font-size: 0;
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    height: 34px;
     min-height: 34px;
-    padding: 0 4px;
+    padding: 0;
+    width: 34px;
+  }
+
+  .premium-plan > a i {
+    font-size: 16px;
+  }
+
+  .premium-plan-featured {
+    margin: 0 -8px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .premium-plan:hover {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .premium-plan-featured:hover {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .support-page {
@@ -3457,6 +3524,7 @@ main {
 
   .pricing-panel {
     height: calc(100svh - 112px);
+    height: calc(100dvh - 112px);
     min-height: 0;
   }
 }

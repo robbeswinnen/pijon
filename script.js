@@ -27,6 +27,10 @@
   var checkoutPlanCapacity = document.querySelector("[data-checkout-capacity]");
   var checkoutStatus = document.querySelector(".checkout-status");
   var audioContext = null;
+  var soundPlayers = {};
+  var hapticsReady = false;
+  var lastHapticScroll = window.scrollY;
+  var lastHapticTime = 0;
   var activeSlide = 0;
   var mobileNavQuery = window.matchMedia("(max-width: 760px)");
   var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -89,9 +93,43 @@
   }
 
   function triggerHaptic(duration) {
-    if (navigator.vibrate) {
-      navigator.vibrate(duration || 10);
+    if (navigator.vibrate && !reducedMotionQuery.matches) {
+      try {
+        navigator.vibrate(duration || 10);
+      } catch (error) {
+        return;
+      }
     }
+  }
+
+  function playSoundAsset(name, fallback) {
+    try {
+      if (!soundPlayers[name]) {
+        soundPlayers[name] = new Audio("./assets/sounds/" + name + ".wav");
+        soundPlayers[name].preload = "auto";
+        soundPlayers[name].playsInline = true;
+      }
+
+      var player = soundPlayers[name];
+      player.currentTime = 0;
+      var playback = player.play();
+
+      if (playback && playback.catch) {
+        playback.catch(fallback);
+      }
+    } catch (error) {
+      fallback();
+    }
+  }
+
+  function preloadSounds() {
+    ["switch", "premium", "tick"].forEach(function (name) {
+      if (!soundPlayers[name]) {
+        soundPlayers[name] = new Audio("./assets/sounds/" + name + ".wav");
+        soundPlayers[name].preload = "auto";
+        soundPlayers[name].playsInline = true;
+      }
+    });
   }
 
   function withAudioContext(play) {
@@ -150,7 +188,7 @@
     oscillator.stop(start + 0.035);
   }
 
-  function playThemeSound(theme) {
+  function synthThemeSound(theme) {
     withAudioContext(function (context) {
       var now = context.currentTime;
       var baseFrequency = theme === "light" ? 155 : 108;
@@ -160,7 +198,13 @@
     });
   }
 
-  function playPremiumSound() {
+  function playThemeSound(theme) {
+    playSoundAsset("switch", function () {
+      synthThemeSound(theme);
+    });
+  }
+
+  function synthPremiumSound() {
     withAudioContext(function (context) {
       var now = context.currentTime;
       var notes = [587.33, 739.99, 880, 1174.66];
@@ -206,7 +250,11 @@
     });
   }
 
-  function playPremiumTick(index) {
+  function playPremiumSound() {
+    playSoundAsset("premium", synthPremiumSound);
+  }
+
+  function synthPremiumTick(index) {
     withAudioContext(function (context) {
       var now = context.currentTime;
       var frequencies = [880, 987.77, 1046.5, 1174.66, 1318.51, 1396.91];
@@ -234,6 +282,12 @@
       overtone.start(now);
       oscillator.stop(now + 0.24);
       overtone.stop(now + 0.16);
+    });
+  }
+
+  function playPremiumTick(index) {
+    playSoundAsset("tick", function () {
+      synthPremiumTick(index);
     });
   }
 
@@ -473,6 +527,34 @@
     });
   });
 
+  ["pointerdown", "touchstart", "keydown"].forEach(function (eventName) {
+    window.addEventListener(
+      eventName,
+      function () {
+        hapticsReady = true;
+        lastHapticScroll = window.scrollY;
+      },
+      { once: true, passive: true }
+    );
+  });
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      var now = Date.now();
+      var distance = Math.abs(window.scrollY - lastHapticScroll);
+
+      if (!hapticsReady || distance < 72 || now - lastHapticTime < 55) {
+        return;
+      }
+
+      lastHapticScroll = window.scrollY;
+      lastHapticTime = now;
+      triggerHaptic(3);
+    },
+    { passive: true }
+  );
+
   if (mobileNavQuery.addEventListener) {
     mobileNavQuery.addEventListener("change", function () {
       applyNavState(true);
@@ -494,6 +576,7 @@
   }
 
   applyTheme(root.dataset.theme || "light");
+  preloadSounds();
   applyNavState(true);
   applyCoreTags(false);
   if (premiumViewButtons.length) {
