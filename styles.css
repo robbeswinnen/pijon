@@ -834,24 +834,27 @@ main {
 }
 
 .mini-feature h3 {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
   font-size: 20px;
   font-weight: 600;
+  gap: 8px;
   line-height: 1.2;
   margin: 0 0 6px;
 }
 
 .mini-feature mark {
+  align-items: center;
   background: linear-gradient(90deg, #ffc300, #ff3299);
   border-radius: 8px;
   color: #ffffff;
   display: inline-flex;
-  align-items: center;
+  flex: 0 0 auto;
   justify-content: center;
   height: 24px;
-  margin-left: 6px;
+  margin: 0;
   overflow: hidden;
-  position: relative;
-  top: 6px;
   width: 32px;
 }
 
