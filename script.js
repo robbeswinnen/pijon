@@ -68,7 +68,7 @@
     }
   }
 
-  function playThemeSound(theme) {
+  function withAudioContext(play) {
     var AudioContext = window.AudioContext || window.webkitAudioContext;
 
     if (!AudioContext) {
@@ -78,42 +78,114 @@
     try {
       audioContext = audioContext || new AudioContext();
 
-      var playNotes = function () {
-        var now = audioContext.currentTime;
-        var frequencies = theme === "light" ? [392, 587.33] : [523.25, 329.63];
-
-        frequencies.forEach(function (frequency, index) {
-          var oscillator = audioContext.createOscillator();
-          var gain = audioContext.createGain();
-          var start = now + index * 0.07;
-
-          oscillator.type = index === 0 ? "sine" : "triangle";
-          oscillator.frequency.setValueAtTime(frequency, start);
-          gain.gain.setValueAtTime(0.0001, start);
-          gain.gain.exponentialRampToValueAtTime(0.035, start + 0.018);
-          gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.2);
-          oscillator.connect(gain);
-          gain.connect(audioContext.destination);
-          oscillator.start(start);
-          oscillator.stop(start + 0.21);
-        });
-      };
-
       if (audioContext.state === "suspended") {
-        audioContext.resume().then(playNotes).catch(function () {});
+        audioContext.resume().then(function () {
+          play(audioContext);
+        }).catch(function () {});
       } else {
-        playNotes();
+        play(audioContext);
       }
     } catch (error) {
       return;
     }
   }
 
+  function scheduleSwitchClick(context, start, level, frequency) {
+    var sampleCount = Math.floor(context.sampleRate * 0.018);
+    var buffer = context.createBuffer(1, sampleCount, context.sampleRate);
+    var data = buffer.getChannelData(0);
+    var source = context.createBufferSource();
+    var filter = context.createBiquadFilter();
+    var noiseGain = context.createGain();
+    var oscillator = context.createOscillator();
+    var toneGain = context.createGain();
+
+    for (var sample = 0; sample < sampleCount; sample += 1) {
+      var envelope = Math.pow(1 - sample / sampleCount, 3);
+      data[sample] = (Math.random() * 2 - 1) * envelope;
+    }
+
+    source.buffer = buffer;
+    filter.type = "highpass";
+    filter.frequency.setValueAtTime(1200, start);
+    noiseGain.gain.setValueAtTime(level, start);
+    noiseGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.026);
+    source.connect(filter);
+    filter.connect(noiseGain);
+    noiseGain.connect(context.destination);
+    source.start(start);
+
+    oscillator.type = "square";
+    oscillator.frequency.setValueAtTime(frequency, start);
+    toneGain.gain.setValueAtTime(level * 0.42, start);
+    toneGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.032);
+    oscillator.connect(toneGain);
+    toneGain.connect(context.destination);
+    oscillator.start(start);
+    oscillator.stop(start + 0.035);
+  }
+
+  function playThemeSound(theme) {
+    withAudioContext(function (context) {
+      var now = context.currentTime;
+      var baseFrequency = theme === "light" ? 155 : 108;
+
+      scheduleSwitchClick(context, now, 0.08, baseFrequency);
+      scheduleSwitchClick(context, now + 0.038, 0.045, baseFrequency * 0.72);
+    });
+  }
+
+  function playPremiumSound() {
+    withAudioContext(function (context) {
+      var now = context.currentTime;
+      var notes = [587.33, 739.99, 880, 1174.66];
+      var foundation = context.createOscillator();
+      var foundationGain = context.createGain();
+
+      foundation.type = "sine";
+      foundation.frequency.setValueAtTime(293.66, now);
+      foundationGain.gain.setValueAtTime(0.0001, now);
+      foundationGain.gain.exponentialRampToValueAtTime(0.024, now + 0.035);
+      foundationGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.72);
+      foundation.connect(foundationGain);
+      foundationGain.connect(context.destination);
+      foundation.start(now);
+      foundation.stop(now + 0.74);
+
+      notes.forEach(function (frequency, index) {
+        var start = now + index * 0.09;
+        var oscillator = context.createOscillator();
+        var overtone = context.createOscillator();
+        var gain = context.createGain();
+        var overtoneGain = context.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(frequency, start);
+        overtone.type = "triangle";
+        overtone.frequency.setValueAtTime(frequency * 2, start);
+        gain.gain.setValueAtTime(0.0001, start);
+        gain.gain.exponentialRampToValueAtTime(0.032, start + 0.018);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.48);
+        overtoneGain.gain.setValueAtTime(0.0001, start);
+        overtoneGain.gain.exponentialRampToValueAtTime(0.008, start + 0.012);
+        overtoneGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.31);
+        oscillator.connect(gain);
+        overtone.connect(overtoneGain);
+        gain.connect(context.destination);
+        overtoneGain.connect(context.destination);
+        oscillator.start(start);
+        overtone.start(start);
+        oscillator.stop(start + 0.5);
+        overtone.stop(start + 0.34);
+      });
+    });
+  }
+
   function createPremiumBurst(trigger) {
     var rect = trigger.getBoundingClientRect();
     var centerX = rect.left + rect.width / 2;
     var centerY = rect.top + rect.height / 2;
-    var colors = ["#ffc300", "#ff1181", "#00e7ff", "#ff7e00", "#8a5cff", "#2bff76"];
+    var colors = ["#ff9300"];
     var burst = document.createElement("span");
     var ring = document.createElement("span");
 
@@ -124,9 +196,9 @@
     ring.className = "premium-click-ring";
     burst.appendChild(ring);
 
-    for (var index = 0; index < 14; index += 1) {
-      var angle = (Math.PI * 2 * index) / 14;
-      var distance = 54 + (index % 3) * 14;
+    for (var index = 0; index < 6; index += 1) {
+      var angle = (Math.PI * 2 * index) / 6;
+      var distance = 30 + (index % 2) * 10;
       var spark = document.createElement("span");
 
       spark.className = "premium-click-spark";
@@ -134,7 +206,7 @@
       spark.style.setProperty("--dy", Math.sin(angle) * distance + "px");
       spark.style.setProperty("--spark-color", colors[index % colors.length]);
       spark.style.setProperty("--spark-rotation", angle * (180 / Math.PI) + 90 + "deg");
-      spark.style.setProperty("--spark-delay", (index % 2) * 24 + "ms");
+      spark.style.setProperty("--spark-delay", index * 14 + "ms");
       burst.appendChild(spark);
     }
 
@@ -210,11 +282,12 @@
 
       premiumTrigger.classList.add("is-launching");
       createPremiumBurst(premiumTrigger);
+      playPremiumSound();
       document.body.classList.add("premium-leaving");
 
       window.setTimeout(function () {
         window.location.href = href;
-      }, 520);
+      }, 820);
     });
   }
 
