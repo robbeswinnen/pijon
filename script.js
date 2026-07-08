@@ -12,8 +12,11 @@
   var coreMore = document.querySelector(".tag-more");
   var coreTagList = document.querySelector("#core-extra-tags");
   var coreExtraTags = Array.prototype.slice.call(document.querySelectorAll(".core-extra-tag"));
+  var premiumTrigger = document.querySelector(".premium-trigger");
+  var audioContext = null;
   var activeSlide = 0;
   var mobileNavQuery = window.matchMedia("(max-width: 760px)");
+  var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function applyTheme(theme) {
     root.dataset.theme = theme;
@@ -65,6 +68,82 @@
     }
   }
 
+  function playThemeSound(theme) {
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContext) {
+      return;
+    }
+
+    try {
+      audioContext = audioContext || new AudioContext();
+
+      var playNotes = function () {
+        var now = audioContext.currentTime;
+        var frequencies = theme === "light" ? [392, 587.33] : [523.25, 329.63];
+
+        frequencies.forEach(function (frequency, index) {
+          var oscillator = audioContext.createOscillator();
+          var gain = audioContext.createGain();
+          var start = now + index * 0.07;
+
+          oscillator.type = index === 0 ? "sine" : "triangle";
+          oscillator.frequency.setValueAtTime(frequency, start);
+          gain.gain.setValueAtTime(0.0001, start);
+          gain.gain.exponentialRampToValueAtTime(0.035, start + 0.018);
+          gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.2);
+          oscillator.connect(gain);
+          gain.connect(audioContext.destination);
+          oscillator.start(start);
+          oscillator.stop(start + 0.21);
+        });
+      };
+
+      if (audioContext.state === "suspended") {
+        audioContext.resume().then(playNotes).catch(function () {});
+      } else {
+        playNotes();
+      }
+    } catch (error) {
+      return;
+    }
+  }
+
+  function createPremiumBurst(trigger) {
+    var rect = trigger.getBoundingClientRect();
+    var centerX = rect.left + rect.width / 2;
+    var centerY = rect.top + rect.height / 2;
+    var colors = ["#ffc300", "#ff1181", "#00e7ff", "#ff7e00", "#8a5cff", "#2bff76"];
+    var burst = document.createElement("span");
+    var ring = document.createElement("span");
+
+    burst.className = "premium-click-burst";
+    burst.style.left = centerX + "px";
+    burst.style.top = centerY + "px";
+    burst.setAttribute("aria-hidden", "true");
+    ring.className = "premium-click-ring";
+    burst.appendChild(ring);
+
+    for (var index = 0; index < 14; index += 1) {
+      var angle = (Math.PI * 2 * index) / 14;
+      var distance = 54 + (index % 3) * 14;
+      var spark = document.createElement("span");
+
+      spark.className = "premium-click-spark";
+      spark.style.setProperty("--dx", Math.cos(angle) * distance + "px");
+      spark.style.setProperty("--dy", Math.sin(angle) * distance + "px");
+      spark.style.setProperty("--spark-color", colors[index % colors.length]);
+      spark.style.setProperty("--spark-rotation", angle * (180 / Math.PI) + 90 + "deg");
+      spark.style.setProperty("--spark-delay", (index % 2) * 24 + "ms");
+      burst.appendChild(spark);
+    }
+
+    document.body.appendChild(burst);
+    window.setTimeout(function () {
+      burst.remove();
+    }, 850);
+  }
+
   function showSlide(index) {
     activeSlide = (index + slides.length) % slides.length;
     slides.forEach(function (slide, slideIndex) {
@@ -104,6 +183,38 @@
       var nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
       applyTheme(nextTheme);
       storeTheme(nextTheme);
+      playThemeSound(nextTheme);
+    });
+  }
+
+  if (premiumTrigger) {
+    premiumTrigger.addEventListener("click", function (event) {
+      var href = premiumTrigger.getAttribute("href");
+      var opensSeparately =
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        premiumTrigger.target === "_blank";
+
+      if (!href || href.charAt(0) === "#" || opensSeparately || reducedMotionQuery.matches) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (premiumTrigger.classList.contains("is-launching")) {
+        return;
+      }
+
+      premiumTrigger.classList.add("is-launching");
+      createPremiumBurst(premiumTrigger);
+      document.body.classList.add("premium-leaving");
+
+      window.setTimeout(function () {
+        window.location.href = href;
+      }, 520);
     });
   }
 
@@ -152,5 +263,7 @@
   applyTheme(root.dataset.theme || "light");
   applyNavState(mobileNavQuery.matches);
   applyCoreTags(false);
-  showSlide(0);
+  if (slides.length) {
+    showSlide(0);
+  }
 })();
