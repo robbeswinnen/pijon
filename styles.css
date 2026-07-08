@@ -38,8 +38,8 @@
   --nav-bg: rgba(129, 213, 232, 0.28);
   --nav-glow: rgba(255, 255, 255, 0.22);
   --nav-border: rgba(255, 255, 255, 0.28);
-  --nav-chip: rgba(30, 55, 113, 0.5);
-  --nav-chip-border: transparent;
+  --nav-chip: rgba(232, 249, 252, 0.58);
+  --nav-chip-border: rgba(255, 255, 255, 0.34);
   --mobile-menu-bg: rgba(255, 255, 255, 0.94);
   --mobile-menu-border: rgba(28, 41, 56, 0.14);
   --mobile-menu-text: #1c2938;
