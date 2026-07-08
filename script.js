@@ -10,6 +10,7 @@
   var previous = document.querySelector(".review-arrow.previous");
   var next = document.querySelector(".review-arrow.next");
   var coreMore = document.querySelector(".tag-more");
+  var coreTagList = document.querySelector("#core-extra-tags");
   var coreExtraTags = Array.prototype.slice.call(document.querySelectorAll(".core-extra-tag"));
   var activeSlide = 0;
   var mobileNavQuery = window.matchMedia("(max-width: 760px)");
@@ -76,8 +77,18 @@
       return;
     }
 
+    if (coreTagList) {
+      coreTagList.classList.toggle("is-expanded", expanded);
+    }
+
     coreExtraTags.forEach(function (tag) {
-      tag.hidden = !expanded;
+      if (expanded) {
+        tag.removeAttribute("hidden");
+        tag.setAttribute("aria-hidden", "false");
+      } else {
+        tag.setAttribute("hidden", "");
+        tag.setAttribute("aria-hidden", "true");
+      }
     });
 
     coreMore.textContent = expanded ? "-4" : "+4";

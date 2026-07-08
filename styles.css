@@ -775,6 +775,14 @@ main {
   padding: 3px 6px;
 }
 
+.tag-list .core-extra-tag {
+  display: none;
+}
+
+.tag-list.is-expanded .core-extra-tag {
+  display: inline-flex;
+}
+
 .tag-list button {
   transition:
     filter 180ms ease,
