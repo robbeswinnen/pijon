@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pijon support and studio resources." />
+    <meta name="theme-color" content="#57c9e0" />
+    <title>Pijon Support</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("pijon-theme");
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+          document.documentElement.dataset.theme = saved || preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" />
+    <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="support-body">
+    <div class="site-shell support-shell">
+      <header class="site-header" aria-label="Primary navigation">
+        <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="nav-tabs"
+          aria-expanded="true"
+          aria-label="Hide navigation links"
+        >
+          <i class="nav-toggle-arrow ri-arrow-right-s-line" aria-hidden="true"></i>
+          <i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
+        </button>
+        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections">
+          <a href="./index.html#platform">Platform</a>
+          <a href="./index.html#studios">For Studios</a>
+        </nav>
+        <div class="header-actions">
+          <a class="icon-button premium-trigger" href="./premium.html" aria-label="Premium features">
+            <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+          </a>
+          <a class="icon-button" href="./support.html" aria-label="Support" aria-current="page">
+            <i class="ri-lifebuoy-line" aria-hidden="true"></i>
+          </a>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode">
+            <i class="ri-moon-line" aria-hidden="true"></i>
+          </button>
+          <a class="icon-button" href="./index.html#contact" aria-label="Login">
+            <i class="ri-login-box-fill" aria-hidden="true"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="support-page" id="top">
+        <nav class="support-actions" aria-label="Support destinations">
+          <a href="./index.html#platform">
+            <i class="ri-dashboard-line" aria-hidden="true"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="./documentation.html">
+            <i class="ri-folder-3-line" aria-hidden="true"></i>
+            <span>Documentation</span>
+          </a>
+        </nav>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -13,6 +13,7 @@
   var coreTagList = document.querySelector("#core-extra-tags");
   var coreExtraTags = Array.prototype.slice.call(document.querySelectorAll(".core-extra-tag"));
   var premiumTrigger = document.querySelector(".premium-trigger");
+  var premiumFeatures = Array.prototype.slice.call(document.querySelectorAll(".premium-feature"));
   var audioContext = null;
   var activeSlide = 0;
   var mobileNavQuery = window.matchMedia("(max-width: 760px)");
@@ -181,6 +182,37 @@
     });
   }
 
+  function playPremiumTick(index) {
+    withAudioContext(function (context) {
+      var now = context.currentTime;
+      var frequencies = [880, 987.77, 1046.5, 1174.66, 1318.51, 1396.91];
+      var oscillator = context.createOscillator();
+      var overtone = context.createOscillator();
+      var gain = context.createGain();
+      var overtoneGain = context.createGain();
+      var frequency = frequencies[index % frequencies.length];
+
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(frequency, now);
+      overtone.type = "sine";
+      overtone.frequency.setValueAtTime(frequency * 2, now);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.018, now + 0.012);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      overtoneGain.gain.setValueAtTime(0.0001, now);
+      overtoneGain.gain.exponentialRampToValueAtTime(0.004, now + 0.01);
+      overtoneGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
+      oscillator.connect(gain);
+      overtone.connect(overtoneGain);
+      gain.connect(context.destination);
+      overtoneGain.connect(context.destination);
+      oscillator.start(now);
+      overtone.start(now);
+      oscillator.stop(now + 0.24);
+      overtone.stop(now + 0.16);
+    });
+  }
+
   function createPremiumBurst(trigger) {
     var rect = trigger.getBoundingClientRect();
     var centerX = rect.left + rect.width / 2;
@@ -290,6 +322,18 @@
       }, 820);
     });
   }
+
+  premiumFeatures.forEach(function (feature, featureIndex) {
+    feature.setAttribute("aria-pressed", "false");
+    feature.addEventListener("click", function () {
+      premiumFeatures.forEach(function (item) {
+        var selected = item === feature;
+        item.classList.toggle("is-active", selected);
+        item.setAttribute("aria-pressed", selected ? "true" : "false");
+      });
+      playPremiumTick(featureIndex);
+    });
+  });
 
   if (navToggle) {
     navToggle.addEventListener("click", function () {

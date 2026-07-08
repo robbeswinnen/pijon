@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Pijon premium anti-cheat plans for competitive mobile game studios."
+      content="Pijon premium anti-cheat features for competitive mobile game studios."
     />
     <meta name="theme-color" content="#57c9e0" />
     <title>Pijon Premium</title>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
   </head>
-  <body>
+  <body class="pricing-body">
     <div class="site-shell pricing-shell">
       <header class="site-header" aria-label="Primary navigation">
         <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
@@ -46,20 +46,12 @@
           <a href="./index.html#studios">For Studios</a>
         </nav>
         <div class="header-actions">
-          <a
-            class="icon-button premium-trigger"
-            href="#pricing"
-            aria-label="Premium plans"
-            aria-current="page"
-          >
-            <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+          <a class="icon-button" href="./index.html#top" aria-label="Home">
+            <i class="ri-home-5-line" aria-hidden="true"></i>
           </a>
-          <a class="icon-button" href="./index.html#contact" aria-label="Support">
+          <a class="icon-button" href="./support.html" aria-label="Support">
             <i class="ri-lifebuoy-line" aria-hidden="true"></i>
           </a>
-          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode">
-            <i class="ri-moon-line" aria-hidden="true"></i>
-          </button>
           <a class="icon-button" href="./index.html#contact" aria-label="Login">
             <i class="ri-login-box-fill" aria-hidden="true"></i>
           </a>
@@ -67,110 +59,53 @@
       </header>
 
       <main class="pricing-page" id="top">
-        <section class="pricing-intro" aria-labelledby="pricing-title">
-          <div class="pricing-kicker">
-            <i class="ri-vip-crown-fill" aria-hidden="true"></i>
-            Pijon Premium
-          </div>
-          <h1 id="pricing-title">Protection that scales with every match.</h1>
-          <p>
-            Start with trusted anti-cheat essentials, then add deeper intelligence and studio
-            controls as your game grows.
-          </p>
-        </section>
-
-        <section class="pricing-grid" id="pricing" aria-label="Premium plans">
-          <article class="pricing-card">
-            <div class="pricing-card-heading">
-              <i class="ri-shield-check-line" aria-hidden="true"></i>
-              <div>
-                <h2>Core</h2>
-                <p>For games entering live testing.</p>
-              </div>
-            </div>
-            <div class="price"><span>€299</span><small>/ month</small></div>
-            <ul>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Up to 50k monthly players</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Core integrity checks</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Server-side Action Gate</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Evidence reports</li>
-            </ul>
-            <a href="./index.html#contact">Start a pilot<i class="ri-arrow-right-line" aria-hidden="true"></i></a>
-          </article>
-
-          <article class="pricing-card pricing-card-featured">
-            <span class="pricing-popular">Most popular</span>
-            <div class="pricing-card-heading">
-              <i class="ri-vip-crown-fill" aria-hidden="true"></i>
-              <div>
-                <h2>Pro</h2>
-                <p>For competitive games at scale.</p>
-              </div>
-            </div>
-            <div class="price"><span>€799</span><small>/ month</small></div>
-            <ul>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Up to 250k monthly players</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Everything in Core</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Account link intelligence</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Advanced studio controls</li>
-            </ul>
-            <a href="./index.html#contact">Choose Pro<i class="ri-arrow-right-line" aria-hidden="true"></i></a>
-          </article>
-
-          <article class="pricing-card">
-            <div class="pricing-card-heading">
-              <i class="ri-building-2-line" aria-hidden="true"></i>
-              <div>
-                <h2>Scale</h2>
-                <p>For established studios and portfolios.</p>
-              </div>
-            </div>
-            <div class="price"><span>Custom</span></div>
-            <ul>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Custom player volume</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Everything in Pro</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Fair Play intelligence</li>
-              <li><i class="ri-check-line" aria-hidden="true"></i>Priority integration support</li>
-            </ul>
-            <a href="./index.html#contact">Talk to us<i class="ri-arrow-right-line" aria-hidden="true"></i></a>
-          </article>
-        </section>
-
-        <section class="pricing-assurance" aria-label="Plan assurances">
-          <div><i class="ri-flashlight-line" aria-hidden="true"></i>Low-latency enforcement</div>
-          <div><i class="ri-shield-check-line" aria-hidden="true"></i>Human-review safeguards</div>
-          <div><i class="ri-customer-service-line" aria-hidden="true"></i>Studio onboarding</div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <div class="footer-inner">
-          <div class="footer-brand">
-            <a class="brand" href="./index.html#top">pijon</a>
-            <p>Mobile game integrity that follows the evidence</p>
-          </div>
-          <nav class="footer-column" aria-label="Useful links">
-            <h2>Useful Links</h2>
-            <a href="./index.html#contact">Request Pilot</a>
-            <a href="./index.html#platform">Core</a>
-            <a href="./index.html#studios">Gate</a>
-            <a href="#pricing">Pricing</a>
-          </nav>
-          <nav class="footer-column" aria-label="Resources">
-            <h2>Resources</h2>
-            <a href="./index.html#features">Features</a>
-            <a href="./index.html#reviews">Reviews</a>
-            <a href="./index.html#contact">Support</a>
-          </nav>
-          <nav class="footer-column" aria-label="Legal">
-            <h2>Legal</h2>
-            <a href="./index.html#top">Terms Of Service</a>
-            <a href="./index.html#top">Privacy Policy</a>
-            <a href="./index.html#top">Cookies Policy</a>
-          </nav>
+        <div class="pricing-art" aria-hidden="true">
+          <span class="pricing-shape pricing-shape-orange"></span>
+          <span class="pricing-shape pricing-shape-ribbon"></span>
+          <span class="pricing-shape pricing-shape-dark"></span>
+          <span class="pricing-shape pricing-shape-yellow"></span>
         </div>
-        <div class="copyright">&copy; Pijon 2014-2026. All rights reserved.</div>
-      </footer>
+
+        <div class="pricing-layout">
+          <section class="pricing-intro" aria-labelledby="pricing-title">
+            <h1 id="pricing-title">More control. Deeper evidence. Premium protection.</h1>
+          </section>
+
+          <section class="pricing-panel" id="premium-features" aria-labelledby="features-panel-title">
+            <div class="pricing-panel-heading">
+              <h2 id="features-panel-title">Premium Features</h2>
+              <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+            </div>
+
+            <div class="premium-feature-grid">
+              <button class="premium-feature" type="button">
+                <i class="ri-links-line" aria-hidden="true"></i>
+                <span>Account Links</span>
+              </button>
+              <button class="premium-feature" type="button">
+                <i class="ri-equalizer-3-line" aria-hidden="true"></i>
+                <span>Studio Controls</span>
+              </button>
+              <button class="premium-feature" type="button">
+                <i class="ri-radar-line" aria-hidden="true"></i>
+                <span>Fair Play Intel</span>
+              </button>
+              <button class="premium-feature" type="button">
+                <i class="ri-customer-service-2-line" aria-hidden="true"></i>
+                <span>Priority Review</span>
+              </button>
+              <button class="premium-feature" type="button">
+                <i class="ri-shield-star-line" aria-hidden="true"></i>
+                <span>Advanced Policies</span>
+              </button>
+              <button class="premium-feature" type="button">
+                <i class="ri-bar-chart-grouped-line" aria-hidden="true"></i>
+                <span>Portfolio Insights</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
     </div>
     <script src="./script.js"></script>
   </body>

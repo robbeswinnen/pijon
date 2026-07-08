@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pijon documentation and product updates." />
+    <meta name="theme-color" content="#57c9e0" />
+    <title>Pijon Documentation</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("pijon-theme");
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+          document.documentElement.dataset.theme = saved || preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" />
+    <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="docs-body">
+    <div class="site-shell docs-shell">
+      <header class="site-header" aria-label="Primary navigation">
+        <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="nav-tabs"
+          aria-expanded="true"
+          aria-label="Hide navigation links"
+        >
+          <i class="nav-toggle-arrow ri-arrow-right-s-line" aria-hidden="true"></i>
+          <i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
+        </button>
+        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections">
+          <a href="./index.html#platform">Platform</a>
+          <a href="./index.html#studios">For Studios</a>
+        </nav>
+        <div class="header-actions">
+          <a class="icon-button premium-trigger" href="./premium.html" aria-label="Premium features">
+            <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+          </a>
+          <a class="icon-button" href="./support.html" aria-label="Support">
+            <i class="ri-lifebuoy-line" aria-hidden="true"></i>
+          </a>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode">
+            <i class="ri-moon-line" aria-hidden="true"></i>
+          </button>
+          <a class="icon-button" href="./index.html#contact" aria-label="Login">
+            <i class="ri-login-box-fill" aria-hidden="true"></i>
+          </a>
+        </div>
+      </header>
+
+      <main class="docs-page" id="top">
+        <aside class="docs-index" aria-label="Documentation sections">
+          <h1>Documentation</h1>
+          <a href="#overview" aria-current="page">Overview</a>
+          <a href="#updates">Changelog</a>
+          <a href="#studio-access">Studio access</a>
+        </aside>
+
+        <article class="docs-content">
+          <section id="overview">
+            <span>Overview</span>
+            <h2>Build fair play into every match.</h2>
+            <p>
+              Public integration guidance belongs here. Detection logic, enforcement thresholds,
+              and operational playbooks remain inside authenticated studio workspaces.
+            </p>
+          </section>
+          <section id="updates">
+            <span>Latest update</span>
+            <h2>A new Pijon released!</h2>
+            <p>Core integrity, evidence workflows, and mobile-native signals are ready for pilots.</p>
+          </section>
+          <section id="studio-access">
+            <span>Subscriber documentation</span>
+            <h2>Studio access</h2>
+            <p>Use individual studio accounts for sensitive documentation and revocable access.</p>
+            <a href="mailto:hello@pijon.example?subject=Pijon%20Documentation%20Access">
+              Request access
+              <i class="ri-arrow-right-line" aria-hidden="true"></i>
+            </a>
+          </section>
+        </article>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
