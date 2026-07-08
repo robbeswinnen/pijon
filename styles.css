@@ -2008,6 +2008,25 @@ main {
 }
 
 .pricing-body .pricing-shell {
+  --hero-top-glow: linear-gradient(
+    90deg,
+    #ff7e00 0%,
+    #7a1f00 58%,
+    rgba(122, 31, 0, 0) 100%
+  );
+  --hero-top-blue: linear-gradient(
+    90deg,
+    #ff5a00 0%,
+    #9a2300 38%,
+    rgba(154, 35, 0, 0) 100%
+  );
+  --hero-main: linear-gradient(90deg, #ff4b00 0%, #ff087f 45%, #ff7e00 80%);
+  --hero-bottom: linear-gradient(
+    90deg,
+    rgba(62, 11, 0, 0) 0%,
+    rgba(45, 8, 0, 0.92) 58%,
+    #dcca00 100%
+  );
   background: #190700;
   height: 100svh;
   min-height: 0;
@@ -2067,38 +2086,8 @@ main {
   display: none;
 }
 
-.pricing-art {
+.premium-hero-art {
   background: #190700;
-  inset: 80px 0 0;
-  overflow: hidden;
-  pointer-events: none;
-  position: absolute;
-}
-
-.pricing-shape {
-  display: block;
-  inset: 0;
-  position: absolute;
-}
-
-.pricing-shape-orange {
-  background: linear-gradient(90deg, #f74b00, #ff8a00);
-  clip-path: polygon(0 0, 100% 0, 100% 46%, 0 25%);
-}
-
-.pricing-shape-ribbon {
-  background: linear-gradient(90deg, #ff047f 0%, #ff112a 48%, #ff7e00 100%);
-  clip-path: polygon(0 18%, 100% 0, 100% 45%, 0 64%);
-}
-
-.pricing-shape-dark {
-  background: linear-gradient(90deg, #481400 0%, #1a0802 56%, #070302 100%);
-  clip-path: polygon(0 72%, 100% 49%, 100% 100%, 0 100%);
-}
-
-.pricing-shape-yellow {
-  background: linear-gradient(90deg, #988900, #f3dd00);
-  clip-path: polygon(57% 88%, 100% 70%, 100% 100%, 48% 100%);
 }
 
 .pricing-layout {
@@ -3195,10 +3184,6 @@ main {
 @media (max-width: 760px) {
   .pricing-body .pricing-page {
     padding-top: 72px;
-  }
-
-  .pricing-art {
-    inset: 72px 0 0;
   }
 
   .pricing-shell .nav-tabs {
