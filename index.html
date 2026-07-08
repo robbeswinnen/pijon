@@ -120,10 +120,10 @@
               </div>
               <span class="delta">6.6k</span>
             </article>
-            <aside class="release-pill" aria-label="Latest release">
+            <a class="release-pill" href="#features" aria-label="View latest updates">
               <i class="ri-sparkling-2-line" aria-hidden="true"></i>
-              <span>Pijon Core, Gate and Trace are now in pilot!</span>
-            </aside>
+              <span>A new Pijon changelog released!</span>
+            </a>
           </div>
         </section>
 
@@ -134,13 +134,25 @@
               Core checks whether the game, device and session can be trusted before match data
               becomes evidence. It looks for tampering, unsafe environments and altered builds.
             </p>
-            <div class="tag-list" aria-label="Core integrity checks">
+            <div class="tag-list" id="core-extra-tags" aria-label="Core integrity checks">
               <span>Build Integrity</span>
               <span>Device Trust</span>
               <span>Memory Tool Detection</span>
               <span>Root/Jailbreak Signals</span>
               <span>Session Validation</span>
-              <strong>+4</strong>
+              <span class="core-extra-tag" hidden>Runtime Memory Checks</span>
+              <span class="core-extra-tag" hidden>Emulator Signals</span>
+              <span class="core-extra-tag" hidden>Signature Drift</span>
+              <span class="core-extra-tag" hidden>Integrity Receipts</span>
+              <button
+                class="tag-more"
+                type="button"
+                aria-expanded="false"
+                aria-controls="core-extra-tags"
+                aria-label="Show 4 more Core checks"
+              >
+                +4
+              </button>
             </div>
           </div>
           <div class="visual-panel feature-panel" aria-hidden="true"></div>
@@ -159,10 +171,7 @@
               <span>Movement Limits</span>
               <span>Fire-Rate Rules</span>
               <span>Hit Validation</span>
-              <span class="premium">
-                <i class="ri-vip-crown-fill" aria-hidden="true"></i>
-                Server-Side Enforcement
-              </span>
+              <span>Server-Side Enforcement</span>
             </div>
           </div>
         </section>
@@ -183,32 +192,32 @@
           <div class="feature-grid">
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Core Integrity <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Core Integrity</h3>
               <p>Confirm the game build, device state and session trust before evidence is used.</p>
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Action Gate <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Action Gate</h3>
               <p>Reject impossible movement, fire rates and hits before they affect players.</p>
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Behavior Trace <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Behavior Trace</h3>
               <p>Study long-term patterns that reveal aim assistance, collusion and hidden cues.</p>
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Evidence Reports <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Evidence Reports</h3>
               <p>Give reviewers clear reasons, confidence levels and match context for each flag.</p>
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Human Review <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Human Review</h3>
               <p>Keep studios in control with review modes that match team size and policy.</p>
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Skill Baselines <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Skill Baselines</h3>
               <p>Compare players against their own history and peers before drawing conclusions.</p>
             </article>
             <article class="mini-feature">
@@ -218,17 +227,17 @@
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Mobile Native <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Mobile Native</h3>
               <p>Protect iOS and Android games without relying on desktop anti-cheat assumptions.</p>
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>Low Latency <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>Low Latency</h3>
               <p>Run instant checks in match while heavier analysis happens off the game client.</p>
             </article>
             <article class="mini-feature">
               <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
-              <h3>False Positive Guard <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <h3>False Positive Guard</h3>
               <p>Require repeated evidence before serious actions are recommended or enforced.</p>
             </article>
             <article class="mini-feature">
@@ -308,7 +317,7 @@
           <nav class="footer-column" aria-label="Resources">
             <h2>Resources</h2>
             <a href="#studios">Team</a>
-            <a href="#features">Blueprint</a>
+            <a href="#features">Updates</a>
             <a href="#platform">Documentation</a>
             <a href="#contact">Support</a>
           </nav>

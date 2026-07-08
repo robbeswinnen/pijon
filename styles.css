@@ -240,6 +240,7 @@ img {
 .nav-toggle:focus-visible,
 .button:focus-visible,
 .icon-button:focus-visible,
+.release-pill:focus-visible,
 .review-arrow:focus-visible,
 .more-button:focus-visible,
 .contact-actions a:focus-visible,
@@ -584,28 +585,39 @@ main {
 }
 
 .tag-list span,
-.tag-list strong {
+.tag-list strong,
+.tag-list button {
   align-items: center;
   background: var(--tag);
   border-radius: 12px;
+  border: 0;
   color: var(--tag-text);
+  cursor: default;
   display: inline-flex;
   font-size: 16px;
   font-weight: 400;
+  font-family: inherit;
   line-height: 1;
   min-height: 24px;
   padding: 3px 12px;
 }
 
-.tag-list strong {
+.tag-list strong,
+.tag-list button {
   align-self: center;
   background: var(--plus-bg);
   border-radius: 8px;
+  color: var(--tag-text);
+  cursor: pointer;
   font-size: 14px;
   font-weight: 400;
   justify-content: center;
   min-width: 24px;
   padding: 3px 6px;
+}
+
+.tag-list button:hover {
+  filter: brightness(1.08);
 }
 
 .tag-list .premium {
@@ -1193,7 +1205,8 @@ main {
   }
 
   .tag-list span,
-  .tag-list strong {
+  .tag-list strong,
+  .tag-list button {
     font-size: 14px;
   }
 
