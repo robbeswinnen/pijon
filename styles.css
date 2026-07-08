@@ -521,18 +521,17 @@ img {
   align-items: center;
   color: #2bff76;
   display: inline-flex;
-  font-size: 14px;
-  height: 14px;
+  font-size: 16px;
+  height: 16px;
   justify-content: center;
   line-height: 1;
-  margin-left: -1px;
+  margin-left: -2px;
   overflow: hidden;
-  width: 14px;
+  width: 16px;
 }
 
 .stat-item .delta i::before {
   display: block;
-  transform: translateY(3px);
 }
 
 .release-pill {
