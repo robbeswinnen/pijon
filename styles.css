@@ -456,9 +456,15 @@ img {
   grid-template-columns: 32px auto;
 }
 
-.stat-item img {
+.stat-item > .stat-icon {
+  align-items: center;
+  color: var(--stats-text);
+  display: inline-flex;
+  font-size: 32px;
   grid-column: 1;
   height: 32px;
+  justify-content: center;
+  line-height: 1;
   width: 32px;
 }
 
@@ -475,11 +481,6 @@ img {
   align-items: center;
   display: flex;
   gap: 10px;
-}
-
-:root[data-theme="light"] .stat-item img {
-  filter: brightness(0) saturate(100%) invert(13%) sepia(20%) saturate(1199%) hue-rotate(174deg)
-    brightness(94%) contrast(91%);
 }
 
 .stat-item span {
