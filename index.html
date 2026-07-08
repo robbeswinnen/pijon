@@ -1,270 +1,328 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pijon | Behavioral Anti-Cheat for Modern Games</title>
-
-    <meta name="description" content="Pijon helps game studios detect unfair play through behavioral analysis, explainable reports, and developer-friendly moderation tools.">
-
-    <link rel="stylesheet" href="styles.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Namdhinggo:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-<header class="site-header">
-    <div class="container nav">
-        <a class="brand" href="#">
-            <img src="assets/logo.png" alt="Pijon logo">
-            <span>pijon</span>
-        </a>
-
-        <nav class="nav-links">
-            <a href="#product">Product</a>
-            <a href="#how">How it works</a>
-            <a href="#pricing">Pricing</a>
-            <a href="mailto:hello@pijon.net">Contact</a>
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Pijon moderation and security landing page with light and dark themes."
+    />
+    <meta name="theme-color" content="#57c9e0" />
+    <title>Pijon</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("pijon-theme");
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+          document.documentElement.dataset.theme = saved || preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" />
+    <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Pijon home">pijon</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-controls="nav-tabs"
+          aria-expanded="true"
+          aria-label="Hide navigation links"
+        >
+          <i class="nav-toggle-arrow ri-arrow-right-s-line" aria-hidden="true"></i>
+          <i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
+        </button>
+        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections">
+          <a href="#platform">Platform</a>
+          <a href="#studios">For Studios</a>
         </nav>
+        <div class="header-actions">
+          <a class="icon-button" href="#features" aria-label="Premium features">
+            <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+          </a>
+          <a class="icon-button" href="#contact" aria-label="Support">
+            <i class="ri-lifebuoy-line" aria-hidden="true"></i>
+          </a>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode">
+            <i class="ri-moon-line" aria-hidden="true"></i>
+          </button>
+          <a class="icon-button" href="#contact" aria-label="Login">
+            <i class="ri-login-box-fill" aria-hidden="true"></i>
+          </a>
+        </div>
+      </header>
 
-        <a class="nav-cta" href="mailto:hello@pijon.net">Get early access</a>
-    </div>
-</header>
-
-<main>
-
-<section class="hero">
-    <div class="container hero-grid">
-        <div class="hero-copy">
-            <p class="eyebrow">Behavioral anti-cheat</p>
-
-            <h1>
-                See the player.<br>
-                <span>Not the cheat.</span>
-            </h1>
-
-            <p class="hero-text">
-                Pijon helps game studios detect unfair play through behavioral analysis.
-                Get clear, explainable insights so you can protect legitimate players
-                without relying on invasive or black-box systems.
-            </p>
-
-            <div class="hero-actions">
-                <a class="button primary" href="mailto:hello@pijon.net">Get early access</a>
-                <a class="button secondary" href="#how">See how it works</a>
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-art" aria-hidden="true">
+            <span class="hero-shape hero-shape-top-glow"></span>
+            <span class="hero-shape hero-shape-top-blue"></span>
+            <span class="hero-shape hero-shape-main"></span>
+            <span class="hero-shape hero-shape-bottom"></span>
+          </div>
+          <div class="hero-inner">
+            <div class="hero-copy">
+              <h1 id="hero-title">
+                <span>Turn</span>
+                <span>suspicious</span>
+                <span>play into</span>
+                <span>evidence</span>
+                <span>you can</span>
+                <span>act on</span>
+              </h1>
+              <div class="hero-buttons" aria-label="Primary actions">
+                <a class="button button-primary" href="#contact">
+                  <span aria-hidden="true">+</span>
+                  Request pilot
+                </a>
+                <a class="button button-secondary" href="#platform">
+                  <span aria-hidden="true">&gt;</span>
+                  Dashboard
+                </a>
+              </div>
             </div>
+            <div class="visual-panel hero-panel" aria-hidden="true"></div>
+          </div>
+        </section>
 
-            <div class="studio-note">
-                <p>Built for indie and mid-sized studios</p>
-                <div class="studio-list">
-                    <span>Mobile FPS</span>
-                    <span>Competitive PvP</span>
-                    <span>Live-service games</span>
-                </div>
-            </div>
-        </div>
+        <section class="stats-band" aria-label="Pijon statistics">
+          <div class="stats-inner">
+            <article class="stat-item">
+              <img src="./assets/stat-games.svg" alt="" aria-hidden="true" />
+              <div>
+                <span>Games</span>
+                <strong>971k</strong>
+              </div>
+              <span class="delta">681k</span>
+            </article>
+            <article class="stat-item">
+              <img src="./assets/stat-raids.svg" alt="" aria-hidden="true" />
+              <div>
+                <span>Raids Stopped</span>
+                <strong>40m</strong>
+              </div>
+              <span class="delta">25k</span>
+            </article>
+            <article class="stat-item">
+              <img src="./assets/stat-nukes.svg" alt="" aria-hidden="true" />
+              <div>
+                <span>Nukes Stopped</span>
+                <strong>9.8m</strong>
+              </div>
+              <span class="delta">6.6k</span>
+            </article>
+            <aside class="release-pill" aria-label="Latest release">
+              <i class="ri-sparkling-2-line" aria-hidden="true"></i>
+              <span>A new version of Pijon released!</span>
+            </aside>
+          </div>
+        </section>
 
-        <div class="dashboard-card" aria-label="Pijon dashboard preview">
-            <div class="dashboard-sidebar">
-                <div class="mini-logo">pijon</div>
-                <span class="active">Overview</span>
-                <span>Players</span>
-                <span>Sessions</span>
-                <span>Alerts</span>
-                <span>Reports</span>
-            </div>
-
-            <div class="dashboard-main">
-                <div class="dashboard-top">
-                    <h2>Overview</h2>
-                    <span>Live demo</span>
-                </div>
-
-                <div class="metric-grid">
-                    <div class="metric">
-                        <p>Flagged players</p>
-                        <strong>128</strong>
-                        <span>+18%</span>
-                    </div>
-
-                    <div class="metric">
-                        <p>Sessions analyzed</p>
-                        <strong>24.8k</strong>
-                        <span>+12%</span>
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <div class="chart-line"></div>
-                </div>
-
-                <div class="alert-table">
-                    <div class="table-row table-head">
-                        <span>Player</span>
-                        <span>Reason</span>
-                        <span>Confidence</span>
-                    </div>
-
-                    <div class="table-row">
-                        <span>Player_9241</span>
-                        <span>Aim pattern</span>
-                        <strong>98%</strong>
-                    </div>
-
-                    <div class="table-row">
-                        <span>Player_5418</span>
-                        <span>Vision cues</span>
-                        <strong>95%</strong>
-                    </div>
-
-                    <div class="table-row">
-                        <span>Player_2301</span>
-                        <span>Movement</span>
-                        <strong>89%</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="trust">
-    <div class="container trust-grid">
-        <div>
-            <strong>Fairer games</strong>
-            <p>Remove unfair advantages and protect legitimate players.</p>
-        </div>
-
-        <div>
-            <strong>Clear insights</strong>
-            <p>Understand what happened with confidence scores and reports.</p>
-        </div>
-
-        <div>
-            <strong>Built for you</strong>
-            <p>Affordable, scalable, and designed for smaller studios.</p>
-        </div>
-    </div>
-</section>
-
-<section id="product" class="section">
-    <div class="container split">
-        <div class="section-copy">
-            <p class="eyebrow">Focus on what matters</p>
-            <h2>Behavior over signatures.</h2>
+        <section class="feature feature-left" id="platform">
+          <div class="feature-copy">
+            <h2>Auto Mod</h2>
             <p>
-                Traditional anti-cheat looks for known tools. Pijon looks for unnatural
-                behavior across aim, movement, awareness, consistency, and match context.
+              Pijon has a very unique auto mod that is based on a heat concept. The more filters
+              you trigger, the quicker Pijon is to silence you.
             </p>
-        </div>
+            <div class="tag-list" aria-label="Auto Mod filters">
+              <span>Advanced Anti Spam</span>
+              <span>Advanced Anti Raid</span>
+              <span>Anti Advertisement</span>
+              <span>Anti NSFW Links</span>
+              <span>Anti Malicious Links</span>
+              <strong>+4</strong>
+            </div>
+          </div>
+          <div class="visual-panel feature-panel" aria-hidden="true"></div>
+        </section>
 
-        <div class="feature-grid">
-            <article class="feature-card">
-                <h3>Harder to bypass</h3>
-                <p>Behavior is difficult to fake consistently across many matches.</p>
+        <section class="feature feature-right" id="studios">
+          <div class="visual-panel feature-panel" aria-hidden="true"></div>
+          <div class="feature-copy">
+            <h2>Anti Nuke</h2>
+            <p>
+              Pijon brought the concept of Anti Nuke to Discord years ago, and the system has been
+              perfected ever since. Pijon monitors staff activity and reacts when risky behavior is
+              met.
+            </p>
+            <div class="tag-list" aria-label="Anti Nuke monitors">
+              <span>Bans/Kicks Monitoring</span>
+              <span>Channel Creations/Deletions</span>
+              <span>Role Creations/Deletions</span>
+              <span class="premium">
+                <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+                Webhook Creations/Deletions
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section class="feature feature-left">
+          <div class="feature-copy">
+            <h2>Verification</h2>
+            <p>
+              You can use a press-to-enter verification or Pijon's custom captcha before members
+              gain access to your server. Verification is useful against raids and attacks.
+            </p>
+          </div>
+          <div class="visual-panel feature-panel" aria-hidden="true"></div>
+        </section>
+
+        <section class="more-features" id="features" aria-labelledby="features-title">
+          <h2 id="features-title">More Features:</h2>
+          <div class="feature-grid">
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
             </article>
-
-            <article class="feature-card">
-                <h3>Fewer false positives</h3>
-                <p>Context-aware analysis helps separate outliers from real abuse.</p>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
             </article>
-
-            <article class="feature-card">
-                <h3>Explainable reports</h3>
-                <p>Every flag includes evidence developers can review and trust.</p>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
             </article>
-
-            <article class="feature-card">
-                <h3>Works with your stack</h3>
-                <p>Use Pijon alongside your existing moderation workflow.</p>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
             </article>
-        </div>
-    </div>
-</section>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+            <article class="mini-feature">
+              <span class="mini-icon"><i class="ri-folder-line" aria-hidden="true"></i></span>
+              <h3>Backups <mark><i class="ri-vip-crown-fill" aria-hidden="true"></i></mark></h3>
+              <p>Take/load backups and synchronize them efficiently with your server.</p>
+            </article>
+          </div>
+          <a class="more-button" href="#contact">And there's even more!</a>
+        </section>
 
-<section id="how" class="section how">
-    <div class="container">
-        <p class="eyebrow center">How it works</p>
-        <h2 class="center">Simple. Transparent. Effective.</h2>
-
-        <div class="steps">
-            <div class="step">
-                <span>1</span>
-                <h3>Data collection</h3>
-                <p>Collect lightweight in-game telemetry through an SDK.</p>
+        <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+          <h2 id="reviews-title">Trusted by the largest games</h2>
+          <div class="review-carousel" aria-label="Trusted game highlights">
+            <button class="review-arrow previous" type="button" aria-label="Previous review">
+              <i class="ri-arrow-left-s-line" aria-hidden="true"></i>
+            </button>
+            <div class="review-window">
+              <div class="review-slide is-active"></div>
+              <div class="review-slide"></div>
+              <div class="review-slide"></div>
             </div>
+            <button class="review-arrow next" type="button" aria-label="Next review">
+              <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
 
-            <div class="step">
-                <span>2</span>
-                <h3>Behavior analysis</h3>
-                <p>Analyze patterns, context, and consistency over time.</p>
-            </div>
+        <section class="growth" aria-labelledby="growth-title">
+          <div>
+            <h2 id="growth-title">Pijon is growing like crazy!</h2>
+            <p>
+              All kinds of games are using Pijon to keep their players and servers safe, maybe its
+              your turn now!
+            </p>
+          </div>
+          <div class="visual-panel growth-panel" aria-hidden="true"></div>
+        </section>
 
-            <div class="step">
-                <span>3</span>
-                <h3>Confidence scoring</h3>
-                <p>Score suspicious behavior with clear key indicators.</p>
-            </div>
-
-            <div class="step">
-                <span>4</span>
-                <h3>Developer report</h3>
-                <p>Review readable reports with supporting evidence.</p>
-            </div>
-
-            <div class="step">
-                <span>5</span>
-                <h3>Take action</h3>
-                <p>You stay in control of moderation decisions.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="pricing" class="cta-section">
-    <div class="container cta">
-        <div>
-            <h2>Ready to build fairer games?</h2>
-            <p>Join the waitlist and be the first to know when Pijon launches.</p>
-        </div>
-
-        <a class="button primary" href="mailto:hello@pijon.net">Get early access</a>
-    </div>
-</section>
-
-</main>
-
-<footer>
-    <div class="container footer-grid">
-        <div>
-            <a class="brand footer-brand" href="#">
-                <img src="assets/logo.png" alt="Pijon logo">
-                <span>pijon</span>
+        <section class="contact-card" id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">Get in Touch</h2>
+          <p>
+            An advanced fully customizable moderation bot at your service with a lot of utilities
+            and a dashboard to make your life easy.
+          </p>
+          <div class="contact-actions">
+            <a href="mailto:hello@pijon.example">
+              <i class="ri-mail-send-fill" aria-hidden="true"></i>
+              E-mail
             </a>
-            <p>Behavioral anti-cheat infrastructure for modern multiplayer games.</p>
-        </div>
+            <a href="tel:+10000000000">
+              <i class="ri-customer-service-2-fill" aria-hidden="true"></i>
+              Phone
+            </a>
+          </div>
+        </section>
+      </main>
 
-        <div>
-            <strong>Product</strong>
-            <a href="#product">Features</a>
-            <a href="#how">How it works</a>
-            <a href="#pricing">Pricing</a>
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <a class="brand" href="#top">pijon</a>
+            <p>Discord moderation and security that is always one step ahead</p>
+          </div>
+          <nav class="footer-column" aria-label="Useful links">
+            <h2>Useful Links</h2>
+            <a href="#contact">Add Pijon</a>
+            <a href="#platform">Premium</a>
+            <a href="#studios">VIP</a>
+            <a href="#reviews">Reviews</a>
+          </nav>
+          <nav class="footer-column" aria-label="Resources">
+            <h2>Resources</h2>
+            <a href="#studios">Team</a>
+            <a href="#features">Updates</a>
+            <a href="#platform">Documentation</a>
+            <a href="#contact">Support</a>
+          </nav>
+          <nav class="footer-column" aria-label="Legal">
+            <h2>Legal</h2>
+            <a href="#top">Terms Of Service</a>
+            <a href="#top">Privacy Policy</a>
+            <a href="#top">Refund Policy</a>
+            <a href="#top">Cookies Policy</a>
+          </nav>
         </div>
-
-        <div>
-            <strong>Company</strong>
-            <a href="mailto:hello@pijon.net">Contact</a>
-            <a href="#">Privacy Policy</a>
-        </div>
-
-        <p class="copyright">© 2026 Pijon. All rights reserved.</p>
+        <div class="copyright">&copy; Pijon 2014-2026. All rights reserved.</div>
+      </footer>
     </div>
-</footer>
-
-<script src="script.js"></script>
-
-</body>
+    <script src="./script.js"></script>
+  </body>
 </html>

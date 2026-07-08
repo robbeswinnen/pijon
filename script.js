@@ -1,38 +1,118 @@
-const header = document.querySelector(".site-header");
+(function () {
+  var root = document.documentElement;
+  var toggle = document.querySelector(".theme-toggle");
+  var header = document.querySelector(".site-header");
+  var navToggle = document.querySelector(".nav-toggle");
+  var navTabs = document.querySelector(".nav-tabs");
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-tabs a"));
+  var themeColor = document.querySelector('meta[name="theme-color"]');
+  var slides = Array.prototype.slice.call(document.querySelectorAll(".review-slide"));
+  var previous = document.querySelector(".review-arrow.previous");
+  var next = document.querySelector(".review-arrow.next");
+  var activeSlide = 0;
+  var mobileNavQuery = window.matchMedia("(max-width: 760px)");
 
-function updateHeader() {
-    if (window.scrollY > 16) {
-        header.classList.add("scrolled");
-    } else {
-        header.classList.remove("scrolled");
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+
+    if (themeColor) {
+      themeColor.setAttribute("content", theme === "dark" ? "#061f37" : "#57c9e0");
     }
-}
 
-updateHeader();
-window.addEventListener("scroll", updateHeader);
-
-const revealElements = document.querySelectorAll(
-    ".hero-copy, .dashboard-card, .trust-grid div, .section-copy, .feature-card, .step, .cta"
-);
-
-revealElements.forEach((element) => {
-    element.classList.add("reveal");
-});
-
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-            }
-        });
-    },
-    {
-        threshold: 0.12
+    if (toggle) {
+      toggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      toggle.innerHTML =
+        theme === "dark"
+          ? '<i class="ri-sun-line" aria-hidden="true"></i>'
+          : '<i class="ri-moon-line" aria-hidden="true"></i>';
     }
-);
+  }
 
-revealElements.forEach((element) => {
-    observer.observe(element);
-});
+  function applyNavState(collapsed) {
+    if (!header || !navToggle || !navTabs) {
+      return;
+    }
+
+    header.classList.toggle("nav-collapsed", collapsed);
+    navTabs.setAttribute("aria-hidden", collapsed ? "true" : "false");
+    navToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    navToggle.setAttribute("aria-label", collapsed ? "Show navigation links" : "Hide navigation links");
+
+    var mobileMenuIcon = navToggle.querySelector(".nav-toggle-menu");
+    if (mobileMenuIcon) {
+      mobileMenuIcon.className = collapsed
+        ? "nav-toggle-menu ri-menu-3-line"
+        : "nav-toggle-menu ri-close-line";
+    }
+
+    navLinks.forEach(function (link) {
+      if (collapsed) {
+        link.setAttribute("tabindex", "-1");
+      } else {
+        link.removeAttribute("tabindex");
+      }
+    });
+  }
+
+  function storeTheme(theme) {
+    try {
+      localStorage.setItem("pijon-theme", theme);
+    } catch (error) {
+      return;
+    }
+  }
+
+  function showSlide(index) {
+    activeSlide = (index + slides.length) % slides.length;
+    slides.forEach(function (slide, slideIndex) {
+      slide.classList.toggle("is-active", slideIndex === activeSlide);
+    });
+  }
+
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+      applyTheme(nextTheme);
+      storeTheme(nextTheme);
+    });
+  }
+
+  if (navToggle) {
+    navToggle.addEventListener("click", function () {
+      var collapsed = !header.classList.contains("nav-collapsed");
+      applyNavState(collapsed);
+    });
+  }
+
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      if (mobileNavQuery.matches) {
+        applyNavState(true);
+      }
+    });
+  });
+
+  if (mobileNavQuery.addEventListener) {
+    mobileNavQuery.addEventListener("change", function (event) {
+      applyNavState(event.matches);
+    });
+  } else if (mobileNavQuery.addListener) {
+    mobileNavQuery.addListener(function (event) {
+      applyNavState(event.matches);
+    });
+  }
+
+  if (previous && next && slides.length) {
+    previous.addEventListener("click", function () {
+      showSlide(activeSlide - 1);
+    });
+
+    next.addEventListener("click", function () {
+      showSlide(activeSlide + 1);
+    });
+  }
+
+  applyTheme(root.dataset.theme || "light");
+  applyNavState(mobileNavQuery.matches);
+  showSlide(0);
+})();
