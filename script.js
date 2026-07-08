@@ -14,6 +14,18 @@
   var coreExtraTags = Array.prototype.slice.call(document.querySelectorAll(".core-extra-tag"));
   var premiumTrigger = document.querySelector(".premium-trigger");
   var premiumFeatures = Array.prototype.slice.call(document.querySelectorAll(".premium-feature"));
+  var premiumViewButtons = Array.prototype.slice.call(
+    document.querySelectorAll("[data-premium-view]")
+  );
+  var premiumViews = Array.prototype.slice.call(
+    document.querySelectorAll("[data-premium-panel]")
+  );
+  var checkoutForm = document.querySelector(".checkout-form");
+  var checkoutPlanName = document.querySelector("[data-checkout-plan]");
+  var checkoutPlanPrice = document.querySelector("[data-checkout-price]");
+  var checkoutPlanInterval = document.querySelector("[data-checkout-interval]");
+  var checkoutPlanCapacity = document.querySelector("[data-checkout-capacity]");
+  var checkoutStatus = document.querySelector(".checkout-status");
   var audioContext = null;
   var activeSlide = 0;
   var mobileNavQuery = window.matchMedia("(max-width: 760px)");
@@ -45,6 +57,13 @@
     navToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
     navToggle.setAttribute("aria-label", collapsed ? "Show navigation links" : "Hide navigation links");
 
+    var desktopArrow = navToggle.querySelector(".nav-toggle-arrow");
+    if (desktopArrow) {
+      desktopArrow.className = collapsed
+        ? "nav-toggle-arrow ri-arrow-down-s-line"
+        : "nav-toggle-arrow ri-arrow-right-s-line";
+    }
+
     var mobileMenuIcon = navToggle.querySelector(".nav-toggle-menu");
     if (mobileMenuIcon) {
       mobileMenuIcon.className = collapsed
@@ -69,6 +88,12 @@
     }
   }
 
+  function triggerHaptic(duration) {
+    if (navigator.vibrate) {
+      navigator.vibrate(duration || 10);
+    }
+  }
+
   function withAudioContext(play) {
     var AudioContext = window.AudioContext || window.webkitAudioContext;
 
@@ -77,15 +102,14 @@
     }
 
     try {
-      audioContext = audioContext || new AudioContext();
+      if (!audioContext || audioContext.state === "closed") {
+        audioContext = new AudioContext();
+      }
 
       if (audioContext.state === "suspended") {
-        audioContext.resume().then(function () {
-          play(audioContext);
-        }).catch(function () {});
-      } else {
-        play(audioContext);
+        audioContext.resume().catch(function () {});
       }
+      play(audioContext);
     } catch (error) {
       return;
     }
@@ -282,12 +306,67 @@
     );
   }
 
+  function applyPremiumView(viewName, withFeedback) {
+    premiumViewButtons.forEach(function (button) {
+      var selected = button.dataset.premiumView === viewName;
+      button.classList.toggle("is-active", selected);
+      button.setAttribute("aria-selected", selected ? "true" : "false");
+      button.setAttribute("tabindex", selected ? "0" : "-1");
+    });
+
+    premiumViews.forEach(function (view) {
+      var selected = view.dataset.premiumPanel === viewName;
+      view.classList.toggle("is-active", selected);
+      view.hidden = !selected;
+    });
+
+    if (withFeedback) {
+      playPremiumTick(viewName === "plans" ? 1 : 4);
+      triggerHaptic(12);
+    }
+  }
+
+  function applyCheckoutPlan() {
+    if (!checkoutPlanName || !checkoutPlanPrice || !checkoutPlanInterval || !checkoutPlanCapacity) {
+      return;
+    }
+
+    var plans = {
+      core: {
+        name: "Core",
+        price: "€299",
+        interval: "/ month",
+        capacity: "Up to 50k monthly players"
+      },
+      premium: {
+        name: "Premium",
+        price: "€799",
+        interval: "/ month",
+        capacity: "Up to 250k monthly players"
+      },
+      scale: {
+        name: "Scale",
+        price: "€149",
+        interval: "/ 100k players",
+        capacity: "Usage-based and billed monthly"
+      }
+    };
+    var requestedPlan = new URLSearchParams(window.location.search).get("plan") || "premium";
+    var plan = plans[requestedPlan] || plans.premium;
+
+    checkoutPlanName.textContent = plan.name;
+    checkoutPlanPrice.textContent = plan.price;
+    checkoutPlanInterval.textContent = plan.interval;
+    checkoutPlanCapacity.textContent = plan.capacity;
+  }
+
   if (toggle) {
     toggle.addEventListener("click", function () {
       var nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
       applyTheme(nextTheme);
       storeTheme(nextTheme);
       playThemeSound(nextTheme);
+      triggerHaptic(12);
     });
   }
 
@@ -302,7 +381,7 @@
         event.altKey ||
         premiumTrigger.target === "_blank";
 
-      if (!href || href.charAt(0) === "#" || opensSeparately || reducedMotionQuery.matches) {
+      if (!href || href.charAt(0) === "#" || opensSeparately) {
         return;
       }
 
@@ -313,13 +392,16 @@
       }
 
       premiumTrigger.classList.add("is-launching");
-      createPremiumBurst(premiumTrigger);
+      if (!reducedMotionQuery.matches) {
+        createPremiumBurst(premiumTrigger);
+        document.body.classList.add("premium-leaving");
+      }
       playPremiumSound();
-      document.body.classList.add("premium-leaving");
+      triggerHaptic(18);
 
       window.setTimeout(function () {
         window.location.href = href;
-      }, 820);
+      }, reducedMotionQuery.matches ? 720 : 820);
     });
   }
 
@@ -332,13 +414,46 @@
         item.setAttribute("aria-pressed", selected ? "true" : "false");
       });
       playPremiumTick(featureIndex);
+      triggerHaptic(10);
     });
   });
+
+  premiumViewButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyPremiumView(button.dataset.premiumView, true);
+    });
+    button.addEventListener("keydown", function (event) {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+        return;
+      }
+
+      event.preventDefault();
+      var direction = event.key === "ArrowRight" ? 1 : -1;
+      var currentIndex = premiumViewButtons.indexOf(button);
+      var nextIndex = (currentIndex + direction + premiumViewButtons.length) % premiumViewButtons.length;
+      var nextButton = premiumViewButtons[nextIndex];
+      nextButton.focus();
+      applyPremiumView(nextButton.dataset.premiumView, true);
+    });
+  });
+
+  if (checkoutForm) {
+    checkoutForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      playPremiumTick(3);
+      triggerHaptic(15);
+      if (checkoutStatus) {
+        checkoutStatus.textContent =
+          "Your plan is ready. Connect a Stripe Checkout URL here before accepting payments.";
+      }
+    });
+  }
 
   if (navToggle) {
     navToggle.addEventListener("click", function () {
       var collapsed = !header.classList.contains("nav-collapsed");
       applyNavState(collapsed);
+      triggerHaptic(8);
     });
   }
 
@@ -346,6 +461,7 @@
     coreMore.addEventListener("click", function () {
       var expanded = coreMore.getAttribute("aria-expanded") === "true";
       applyCoreTags(!expanded);
+      triggerHaptic(8);
     });
   }
 
@@ -358,12 +474,12 @@
   });
 
   if (mobileNavQuery.addEventListener) {
-    mobileNavQuery.addEventListener("change", function (event) {
-      applyNavState(event.matches);
+    mobileNavQuery.addEventListener("change", function () {
+      applyNavState(true);
     });
   } else if (mobileNavQuery.addListener) {
-    mobileNavQuery.addListener(function (event) {
-      applyNavState(event.matches);
+    mobileNavQuery.addListener(function () {
+      applyNavState(true);
     });
   }
 
@@ -378,8 +494,12 @@
   }
 
   applyTheme(root.dataset.theme || "light");
-  applyNavState(mobileNavQuery.matches);
+  applyNavState(true);
   applyCoreTags(false);
+  if (premiumViewButtons.length) {
+    applyPremiumView("plans", false);
+  }
+  applyCheckoutPlan();
   if (slides.length) {
     showSlide(0);
   }

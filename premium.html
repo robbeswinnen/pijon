@@ -29,16 +29,16 @@
   </head>
   <body class="pricing-body">
     <div class="site-shell pricing-shell">
-      <header class="site-header" aria-label="Primary navigation">
+      <header class="site-header nav-collapsed" aria-label="Primary navigation">
         <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
         <button
           class="nav-toggle"
           type="button"
           aria-controls="nav-tabs"
-          aria-expanded="true"
-          aria-label="Hide navigation links"
+          aria-expanded="false"
+          aria-label="Show navigation links"
         >
-          <i class="nav-toggle-arrow ri-arrow-right-s-line" aria-hidden="true"></i>
+          <i class="nav-toggle-arrow ri-arrow-down-s-line" aria-hidden="true"></i>
           <i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
         </button>
         <nav class="nav-tabs" id="nav-tabs" aria-label="Sections">
@@ -69,39 +69,116 @@
         <div class="pricing-layout">
           <section class="pricing-intro" aria-labelledby="pricing-title">
             <h1 id="pricing-title">More control. Deeper evidence. Premium protection.</h1>
+            <div class="premium-switcher" role="tablist" aria-label="Premium views">
+              <button
+                type="button"
+                role="tab"
+                aria-controls="premium-plans"
+                aria-selected="true"
+                data-premium-view="plans"
+              >
+                <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                Plans
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-controls="premium-more"
+                aria-selected="false"
+                data-premium-view="more"
+              >
+                <i class="ri-add-line" aria-hidden="true"></i>
+                More
+              </button>
+            </div>
           </section>
 
-          <section class="pricing-panel" id="premium-features" aria-labelledby="features-panel-title">
-            <div class="pricing-panel-heading">
-              <h2 id="features-panel-title">Premium Features</h2>
-              <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+          <section class="pricing-panel" aria-label="Premium plans and features">
+            <div
+              class="premium-view is-active"
+              id="premium-plans"
+              role="tabpanel"
+              data-premium-panel="plans"
+            >
+              <div class="pricing-panel-heading">
+                <h2>Choose your plan.</h2>
+                <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+              </div>
+
+              <div class="premium-plan-grid">
+                <article class="premium-plan">
+                  <i class="ri-shield-check-line" aria-hidden="true"></i>
+                  <h3>Core</h3>
+                  <div class="premium-price"><span>€299</span><small>/ month</small></div>
+                  <strong>Up to 50k players</strong>
+                  <a href="./checkout.html?plan=core">
+                    Buy Core
+                    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                  </a>
+                </article>
+
+                <article class="premium-plan premium-plan-featured">
+                  <i class="ri-vip-crown-fill" aria-hidden="true"></i>
+                  <h3>Premium</h3>
+                  <div class="premium-price"><span>€799</span><small>/ month</small></div>
+                  <strong>Up to 250k players</strong>
+                  <a href="./checkout.html?plan=premium">
+                    Buy Premium
+                    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                  </a>
+                </article>
+
+                <article class="premium-plan">
+                  <i class="ri-building-2-line" aria-hidden="true"></i>
+                  <h3>Scale</h3>
+                  <div class="premium-price"><span>€149</span><small>/ 100k players</small></div>
+                  <strong>Billed monthly</strong>
+                  <a href="./checkout.html?plan=scale">
+                    Buy Scale
+                    <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                  </a>
+                </article>
+              </div>
             </div>
 
-            <div class="premium-feature-grid">
-              <button class="premium-feature" type="button">
-                <i class="ri-links-line" aria-hidden="true"></i>
-                <span>Account Links</span>
-              </button>
-              <button class="premium-feature" type="button">
-                <i class="ri-equalizer-3-line" aria-hidden="true"></i>
-                <span>Studio Controls</span>
-              </button>
-              <button class="premium-feature" type="button">
-                <i class="ri-radar-line" aria-hidden="true"></i>
-                <span>Fair Play Intel</span>
-              </button>
-              <button class="premium-feature" type="button">
-                <i class="ri-customer-service-2-line" aria-hidden="true"></i>
-                <span>Priority Review</span>
-              </button>
-              <button class="premium-feature" type="button">
-                <i class="ri-shield-star-line" aria-hidden="true"></i>
-                <span>Advanced Policies</span>
-              </button>
-              <button class="premium-feature" type="button">
-                <i class="ri-bar-chart-grouped-line" aria-hidden="true"></i>
-                <span>Portfolio Insights</span>
-              </button>
+            <div
+              class="premium-view"
+              id="premium-more"
+              role="tabpanel"
+              data-premium-panel="more"
+              hidden
+            >
+              <div class="pricing-panel-heading">
+                <h2>Everything in Premium.</h2>
+                <i class="ri-sparkling-2-line" aria-hidden="true"></i>
+              </div>
+
+              <div class="premium-feature-grid">
+                <button class="premium-feature" type="button">
+                  <i class="ri-links-line" aria-hidden="true"></i>
+                  <span>Account Links</span>
+                </button>
+                <button class="premium-feature" type="button">
+                  <i class="ri-equalizer-3-line" aria-hidden="true"></i>
+                  <span>Studio Controls</span>
+                </button>
+                <button class="premium-feature" type="button">
+                  <i class="ri-radar-line" aria-hidden="true"></i>
+                  <span>Fair Play Intel</span>
+                </button>
+                <button class="premium-feature" type="button">
+                  <i class="ri-customer-service-2-line" aria-hidden="true"></i>
+                  <span>Priority Review</span>
+                </button>
+                <button class="premium-feature" type="button">
+                  <i class="ri-shield-star-line" aria-hidden="true"></i>
+                  <span>Advanced Policies</span>
+                </button>
+                <button class="premium-feature" type="button">
+                  <i class="ri-bar-chart-grouped-line" aria-hidden="true"></i>
+                  <span>Portfolio Insights</span>
+                </button>
+              </div>
             </div>
           </section>
         </div>

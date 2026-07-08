@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pijon Refund and Cancellation Policy." />
+    <meta name="theme-color" content="#57c9e0" />
+    <title>Pijon Refund Policy</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("pijon-theme");
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = saved || preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" />
+    <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="legal-body">
+    <div class="site-shell legal-shell">
+      <header class="site-header nav-collapsed" aria-label="Primary navigation">
+        <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
+        <button class="nav-toggle" type="button" aria-controls="nav-tabs" aria-expanded="false" aria-label="Show navigation links">
+          <i class="nav-toggle-arrow ri-arrow-down-s-line" aria-hidden="true"></i><i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
+        </button>
+        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections"><a href="./index.html#platform">Platform</a><a href="./index.html#studios">For Studios</a></nav>
+        <div class="header-actions">
+          <a class="icon-button premium-trigger" href="./premium.html" aria-label="Premium features"><i class="ri-vip-crown-fill" aria-hidden="true"></i></a>
+          <a class="icon-button" href="./support.html" aria-label="Support"><i class="ri-lifebuoy-line" aria-hidden="true"></i></a>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode"><i class="ri-moon-line" aria-hidden="true"></i></button>
+          <a class="icon-button" href="./index.html#contact" aria-label="Login"><i class="ri-login-box-fill" aria-hidden="true"></i></a>
+        </div>
+      </header>
+
+      <main class="legal-page">
+        <article>
+          <div class="legal-heading">
+            <span>Effective 8 July 2026</span>
+            <h1>Refund and Cancellation Policy</h1>
+            <p>
+              Draft for legal review. Reconcile this Policy with the final billing provider,
+              order form, customer type, Belgian implementation of EU consumer rules, and service
+              credit commitments before accepting payments.
+            </p>
+          </div>
+
+          <section><h2>1. Scope</h2><p>This Policy applies to online purchases of Pijon Core, Premium, Scale, and related paid services from <strong>[Pijon legal entity]</strong>. An individually negotiated order form may contain different cancellation, refund, or service-credit terms; that order form controls where it expressly differs.</p></section>
+
+          <section><h2>2. Monthly subscriptions</h2><p>Core and Premium are billed monthly in advance unless checkout states otherwise. The subscription renews automatically until cancelled. Cancellation takes effect at the end of the current paid billing period, and access continues through that date. Partial months are not normally prorated.</p><p>Customers should be able to cancel through account billing controls without contacting sales. Until account billing is launched, cancellation requests may be sent to <a href="mailto:billing@pijon.example">billing@pijon.example</a>.</p></section>
+
+          <section><h2>3. Usage-based Scale fees</h2><p>Scale is priced at the displayed amount per block of measured monthly players. The checkout page and order summary must state the unit, measurement period, minimum commitment, rounding method, included usage, and any cap before purchase. Usage already consumed is generally non-refundable unless the measurement was materially incorrect or the Service did not conform to the agreement.</p></section>
+
+          <section><h2>4. Standard refund position</h2><p>Except where required by law, stated in an order form, or covered by the situations below, subscription and usage fees are non-refundable once the relevant billing period or metered service has begun. We encourage studios to use the pilot or staging environment to validate compatibility before production rollout.</p></section>
+
+          <section><h2>5. Duplicate, incorrect, or unauthorised charges</h2><p>We will refund confirmed duplicate charges, mathematical billing errors, and charges made after an effective cancellation. Report suspected unauthorised payment promptly so the payment provider and account can be secured. We may request invoice, account, and transaction details needed to investigate.</p></section>
+
+          <section><h2>6. Service non-conformity</h2><p>If the paid Service materially fails to conform to the contract, notify support with sufficient detail. We will first attempt to restore conformity within a reasonable period. Where required by applicable law or the contract, the customer may be entitled to a proportionate price reduction or termination and refund if the problem cannot be corrected, recurs materially, or is sufficiently serious.</p></section>
+
+          <section><h2>7. Outages and service credits</h2><p>Short interruptions, planned maintenance, beta features, customer integration errors, unsupported versions, third-party outages outside reasonable control, and force-majeure events do not automatically qualify for refunds. If a Service Level Agreement applies, eligible outages are addressed through its service-credit procedure. Service credits are not cash refunds unless the agreement or mandatory law says otherwise.</p></section>
+
+          <section><h2>8. EU and consumer withdrawal rights</h2><p>Pijon is intended primarily for professional studio customers purchasing for business purposes. Statutory consumer withdrawal rules may therefore not apply to most subscriptions. If a purchaser legally qualifies as a consumer, mandatory rights remain unaffected.</p><p>EU consumers generally have a 14-day right to withdraw from distance service contracts. Where the consumer expressly requests performance during that period, proportionate payment may be due for service supplied before withdrawal. For digital content or services, rights may be affected where performance starts after express consent and acknowledgement, as permitted by law. Checkout must collect any legally required request and acknowledgement separately and clearly.</p></section>
+
+          <section><h2>9. Plan changes</h2><p>Upgrades may take effect immediately, with a clearly disclosed prorated charge or credit. Downgrades normally take effect at the next renewal. If a downgrade would exceed included volume or remove required features, the interface should explain the effect before confirmation.</p></section>
+
+          <section><h2>10. Taxes and currency</h2><p>Refunds do not include taxes that Pijon is legally unable to recover. Currency-conversion differences, bank charges, and payment-provider fees outside Pijon’s control are not refundable unless required by law. Approved refunds are returned to the original payment method where possible.</p></section>
+
+          <section><h2>11. Requesting a refund</h2><p>Send requests to <a href="mailto:billing@pijon.example">billing@pijon.example</a> within <strong>[30]</strong> days of the relevant charge, unless a longer legal period applies. Include the studio name, account email, invoice number, charge date, amount, plan, and reason. We aim to acknowledge requests within <strong>[5]</strong> business days and communicate the outcome within <strong>[10]</strong> business days after receiving necessary information.</p></section>
+
+          <section><h2>12. Chargebacks</h2><p>Contact us before initiating a chargeback so we can investigate quickly. This does not restrict legal rights. Fraudulent or abusive chargebacks may result in account suspension, evidence preservation, and recovery of permitted costs.</p></section>
+
+          <section><h2>13. Changes and contact</h2><p>Changes apply prospectively and will not reduce mandatory rights. Questions may be sent to <a href="mailto:billing@pijon.example">billing@pijon.example</a> or <strong>[postal address]</strong>.</p></section>
+        </article>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

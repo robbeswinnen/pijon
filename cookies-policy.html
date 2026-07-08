@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pijon Cookie Policy." />
+    <meta name="theme-color" content="#57c9e0" />
+    <title>Pijon Cookie Policy</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("pijon-theme");
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = saved || preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" />
+    <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="legal-body">
+    <div class="site-shell legal-shell">
+      <header class="site-header nav-collapsed" aria-label="Primary navigation">
+        <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
+        <button class="nav-toggle" type="button" aria-controls="nav-tabs" aria-expanded="false" aria-label="Show navigation links">
+          <i class="nav-toggle-arrow ri-arrow-down-s-line" aria-hidden="true"></i><i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
+        </button>
+        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections"><a href="./index.html#platform">Platform</a><a href="./index.html#studios">For Studios</a></nav>
+        <div class="header-actions">
+          <a class="icon-button premium-trigger" href="./premium.html" aria-label="Premium features"><i class="ri-vip-crown-fill" aria-hidden="true"></i></a>
+          <a class="icon-button" href="./support.html" aria-label="Support"><i class="ri-lifebuoy-line" aria-hidden="true"></i></a>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode"><i class="ri-moon-line" aria-hidden="true"></i></button>
+          <a class="icon-button" href="./index.html#contact" aria-label="Login"><i class="ri-login-box-fill" aria-hidden="true"></i></a>
+        </div>
+      </header>
+
+      <main class="legal-page">
+        <article>
+          <div class="legal-heading">
+            <span>Effective 8 July 2026</span>
+            <h1>Cookie Policy</h1>
+            <p>
+              Draft for legal review. Update this Policy and the consent interface whenever
+              analytics, advertising, authentication, payment, or support vendors change their
+              browser storage technologies.
+            </p>
+          </div>
+
+          <section><h2>1. Scope</h2><p>This Policy explains how <strong>[Pijon legal entity]</strong> uses cookies, local storage, pixels, SDK storage, and similar technologies on the public website and authenticated studio services. It should be read with the <a href="./privacy-policy.html">Privacy Policy</a>.</p></section>
+
+          <section><h2>2. What these technologies are</h2><p>Cookies are small text files stored by a browser. Local storage keeps information within the browser without necessarily sending it with each request. Similar technologies can include pixels, software-development-kit storage, device identifiers, and scripts that read information from a user’s device. Belgian and EU rules may apply to all of these technologies, not only traditional cookies.</p></section>
+
+          <section><h2>3. Current public-site use</h2><p>The current public Pijon site stores the user’s selected light or dark theme in local storage under <code>pijon-theme</code>. This preference is functional, remains on the device until cleared, and is not used for advertising or cross-site tracking.</p><p>The current static public site does not intentionally set advertising cookies or non-essential analytics cookies. If analytics or other optional technologies are introduced, they must remain disabled until the user provides valid consent where required.</p></section>
+
+          <section>
+            <h2>4. Categories we may use</h2>
+            <table>
+              <thead><tr><th>Category</th><th>Purpose</th><th>Consent</th><th>Typical duration</th></tr></thead>
+              <tbody>
+                <tr><td>Strictly necessary</td><td>Authentication, security, load balancing, fraud prevention, and checkout continuity</td><td>Not optional where required to provide the requested service</td><td>Session to <strong>[12 months]</strong></td></tr>
+                <tr><td>Functional</td><td>Theme, language, accessibility, and interface choices</td><td>Depends on necessity and local law</td><td>Up to <strong>[12 months]</strong></td></tr>
+                <tr><td>Analytics</td><td>Aggregated traffic, reliability, and product-usage measurement</td><td>Consent before placement where required</td><td>Up to <strong>[13 months]</strong></td></tr>
+                <tr><td>Support and communications</td><td>Remember support sessions or communication preferences</td><td>Consent unless strictly requested or necessary</td><td>Provider dependent</td></tr>
+                <tr><td>Advertising</td><td>Cross-site advertising or behavioural profiling</td><td>Prior consent</td><td>Not currently planned</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section><h2>5. Expected authenticated-service technologies</h2><p>Before the studio console launches, the production inventory should identify each technology by name, provider, domain, purpose, category, data collected, legal basis, and expiry. Expected strictly necessary items may include:</p><ul><li>a secure session cookie marked <code>Secure</code>, <code>HttpOnly</code>, and an appropriate <code>SameSite</code> value;</li><li>a CSRF or request-integrity token;</li><li>load-balancing and abuse-prevention identifiers;</li><li>a short-lived checkout or subscription-state token; and</li><li>consent-choice storage where optional technologies are offered.</li></ul></section>
+
+          <section><h2>6. Consent and choices</h2><p>Where consent is required, Pijon will provide a clear choice before optional technologies are used. Accept and reject controls should be equally accessible, optional categories should be off by default, and consent should be specific, informed, freely given, and withdrawable as easily as it was given.</p><p>Withdrawing consent does not affect processing that occurred lawfully before withdrawal. Necessary technologies cannot be disabled through the consent tool where they are required to provide a service explicitly requested by the user.</p></section>
+
+          <section><h2>7. Browser and device controls</h2><p>Users can clear or block cookies and site data through browser settings. Doing so may sign the user out, reset theme or language choices, or prevent authenticated features from operating. Browser “do not track” signals do not have a uniform legal or technical standard; Pijon will honour legally recognised preference signals where required.</p></section>
+
+          <section><h2>8. Third parties</h2><p>Payment, authentication, hosting, support, or analytics providers may place technologies when their services are used. The final production inventory and consent manager must name those providers and link to relevant notices. Pijon will contractually limit providers to agreed purposes and will not permit non-essential third-party tracking before required consent.</p></section>
+
+          <section><h2>9. Updates</h2><p>We may update this Policy when technologies, vendors, or law changes. Material changes will be reflected in the effective date and, where appropriate, through a renewed consent request.</p></section>
+
+          <section><h2>10. Contact</h2><p>Questions may be sent to <a href="mailto:privacy@pijon.example">privacy@pijon.example</a> or <strong>[postal address]</strong>.</p></section>
+        </article>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pijon Privacy Policy." />
+    <meta name="theme-color" content="#57c9e0" />
+    <title>Pijon Privacy Policy</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("pijon-theme");
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+          document.documentElement.dataset.theme = saved || preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" />
+    <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="legal-body">
+    <div class="site-shell legal-shell">
+      <header class="site-header nav-collapsed" aria-label="Primary navigation">
+        <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
+        <button class="nav-toggle" type="button" aria-controls="nav-tabs" aria-expanded="false" aria-label="Show navigation links">
+          <i class="nav-toggle-arrow ri-arrow-down-s-line" aria-hidden="true"></i>
+          <i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
+        </button>
+        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections">
+          <a href="./index.html#platform">Platform</a>
+          <a href="./index.html#studios">For Studios</a>
+        </nav>
+        <div class="header-actions">
+          <a class="icon-button premium-trigger" href="./premium.html" aria-label="Premium features"><i class="ri-vip-crown-fill" aria-hidden="true"></i></a>
+          <a class="icon-button" href="./support.html" aria-label="Support"><i class="ri-lifebuoy-line" aria-hidden="true"></i></a>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode"><i class="ri-moon-line" aria-hidden="true"></i></button>
+          <a class="icon-button" href="./index.html#contact" aria-label="Login"><i class="ri-login-box-fill" aria-hidden="true"></i></a>
+        </div>
+      </header>
+
+      <main class="legal-page">
+        <article>
+          <div class="legal-heading">
+            <span>Effective 8 July 2026</span>
+            <h1>Privacy Policy</h1>
+            <p>
+              This draft must be reviewed by qualified counsel and completed with Pijon’s final
+              legal entity, address, company number, vendors, retention periods, and transfer
+              mechanisms before production use.
+            </p>
+          </div>
+
+          <section>
+            <h2>1. Who we are</h2>
+            <p>
+              Pijon is operated by <strong>[Pijon legal entity]</strong>, registered under company
+              number <strong>[company number]</strong>, with its registered office at
+              <strong>[registered address, Belgium]</strong> (“Pijon”, “we”, “us”, or “our”).
+              Questions may be sent to <a href="mailto:privacy@pijon.example">privacy@pijon.example</a>.
+              Our data protection contact is <strong>[name or role]</strong>.
+            </p>
+          </section>
+
+          <section>
+            <h2>2. Scope and our role</h2>
+            <p>
+              This Policy covers Pijon’s public website, studio accounts, subscription and support
+              interactions, and the Pijon anti-cheat service. For studio account, billing, website,
+              and direct support data, Pijon generally acts as data controller.
+            </p>
+            <p>
+              When a game studio sends player or match data to Pijon, the studio generally
+              determines the purposes and means of that processing and Pijon acts as processor on
+              its documented instructions. The applicable Data Processing Agreement controls that
+              processing. Players should also review the privacy notice of the relevant game studio.
+            </p>
+          </section>
+
+          <section>
+            <h2>3. Personal data we process</h2>
+            <ul>
+              <li><strong>Account data:</strong> name, work email, authentication data, role, studio membership, and account preferences.</li>
+              <li><strong>Commercial data:</strong> plan, billing contact, invoices, VAT details, payment status, and transaction references. Card data should be handled by the payment provider, not Pijon.</li>
+              <li><strong>Support data:</strong> messages, attachments, call notes, diagnostic information, and feedback.</li>
+              <li><strong>Technical data:</strong> IP address, browser, operating system, device and application identifiers, timestamps, logs, and security events.</li>
+              <li><strong>Anti-cheat data:</strong> pseudonymous player identifiers, session and match identifiers, build information, device-integrity signals, server-authoritative actions, approved gameplay telemetry, evidence, and review outcomes.</li>
+              <li><strong>Website choices:</strong> theme preference stored locally and, where introduced, cookie-consent choices.</li>
+            </ul>
+            <p>
+              Studios must not send special-category data, government identifiers, payment card
+              details, private communications, or unrelated personal data unless expressly agreed
+              in writing and lawfully supported.
+            </p>
+          </section>
+
+          <section>
+            <h2>4. Why we process data</h2>
+            <table>
+              <thead><tr><th>Purpose</th><th>Typical legal basis</th></tr></thead>
+              <tbody>
+                <tr><td>Provide accounts, subscriptions, documentation, support, and the service</td><td>Contract performance or steps requested before contract</td></tr>
+                <tr><td>Protect accounts, prevent fraud, investigate abuse, and maintain security</td><td>Legitimate interests and legal obligations</td></tr>
+                <tr><td>Process invoices, tax records, and mandatory business records</td><td>Legal obligations and contract performance</td></tr>
+                <tr><td>Improve reliability, usability, and product performance</td><td>Legitimate interests, using minimised or aggregated data where practical</td></tr>
+                <tr><td>Send requested product communications and service notices</td><td>Contract performance or legitimate interests</td></tr>
+                <tr><td>Send optional marketing or use non-essential analytics</td><td>Consent where required</td></tr>
+                <tr><td>Process studio-provided player data</td><td>The studio’s documented instructions under the Data Processing Agreement</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>5. Anti-cheat analysis and human review</h2>
+            <p>
+              Pijon may generate risk indicators, confidence assessments, and recommended actions
+              from integrity, server, and behavioral signals. Pijon is designed to support
+              reviewable studio decisions. Studios configure enforcement policy and remain
+              responsible for player notices, sanctions, appeals, and any legally required human
+              involvement.
+            </p>
+            <p>
+              Pijon should not be configured to make solely automated decisions producing legal or
+              similarly significant effects unless the studio has confirmed a lawful basis,
+              safeguards, transparency, and any required right to human intervention.
+            </p>
+          </section>
+
+          <section>
+            <h2>6. Sharing and processors</h2>
+            <p>We may share data with carefully selected providers for:</p>
+            <ul>
+              <li>cloud hosting, databases, content delivery, security, and monitoring;</li>
+              <li>authentication, email delivery, customer support, and documentation;</li>
+              <li>payment processing, invoicing, accounting, and fraud prevention;</li>
+              <li>professional advisers, auditors, insurers, and authorities where legally required; and</li>
+              <li>a corporate transaction, subject to appropriate confidentiality and notice.</li>
+            </ul>
+            <p>
+              The final production Policy must identify or link to the current subprocessors. We do
+              not sell personal data or use anti-cheat data for third-party advertising.
+            </p>
+          </section>
+
+          <section>
+            <h2>7. International transfers</h2>
+            <p>
+              Where personal data is transferred outside the European Economic Area, the United
+              Kingdom, or Switzerland, we use an applicable adequacy decision, approved standard
+              contractual clauses, or another lawful transfer mechanism, together with
+              supplementary safeguards where required.
+            </p>
+          </section>
+
+          <section>
+            <h2>8. Retention</h2>
+            <p>
+              We keep data only as long as needed for the stated purpose, contract, security, legal
+              obligations, and dispute resolution. Final periods must be recorded in Pijon’s
+              retention schedule. Expected categories include:
+            </p>
+            <ul>
+              <li>account data for the subscription term plus <strong>[period]</strong>;</li>
+              <li>billing and tax records for the statutory retention period;</li>
+              <li>support records for <strong>[period]</strong> after closure;</li>
+              <li>security and audit logs for <strong>[period]</strong>;</li>
+              <li>player evidence according to each studio’s configured retention instructions; and</li>
+              <li>backups until overwritten under the documented backup lifecycle.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>9. Security</h2>
+            <p>
+              We use technical and organisational measures proportionate to risk, including
+              encryption in transit and at rest, access controls, multifactor authentication for
+              privileged access, scoped credentials, audit logging, monitoring, backup controls,
+              vulnerability management, and incident-response procedures. No system is completely
+              secure; studios must also secure their own integrations and credentials.
+            </p>
+          </section>
+
+          <section>
+            <h2>10. Your rights</h2>
+            <p>
+              Subject to applicable law, individuals may request access, rectification, erasure,
+              restriction, portability, or objection; withdraw consent; and lodge a complaint with
+              a supervisory authority. In Belgium, the authority is the
+              <a href="https://www.dataprotectionauthority.be/" rel="noreferrer">Data Protection Authority</a>.
+            </p>
+            <p>
+              Requests relating to a player’s game data should normally be sent to the relevant
+              studio. If Pijon receives such a request as processor, we may refer it to that studio.
+              We may verify identity and retain a record of the request where legally permitted.
+            </p>
+          </section>
+
+          <section>
+            <h2>11. Children</h2>
+            <p>
+              Studio accounts are intended for authorised business users. Player-data processing
+              may involve games used by minors; the studio is responsible for age-appropriate
+              notices, parental consent where required, and configuring proportionate collection
+              and retention. Pijon does not knowingly create direct consumer accounts for children.
+            </p>
+          </section>
+
+          <section>
+            <h2>12. Cookies and local storage</h2>
+            <p>
+              The public site currently stores the selected light or dark theme in local storage.
+              Authenticated services may require strictly necessary session and security
+              technologies. Non-essential analytics or marketing technologies must not be used
+              without the legally required consent. See our <a href="./cookies-policy.html">Cookie Policy</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2>13. Changes and contact</h2>
+            <p>
+              We may update this Policy as the service, vendors, or law changes. Material changes
+              will be communicated through the service or by email where appropriate. Contact
+              <a href="mailto:privacy@pijon.example">privacy@pijon.example</a> or write to
+              <strong>[postal address]</strong>.
+            </p>
+          </section>
+        </article>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
