@@ -37,6 +37,8 @@
   var mascotHideTimer = null;
   var previousMascotPosition = -1;
   var lastConfettiSoundAt = 0;
+  var confettiAudioUnlocked = false;
+  var confettiAudioUnlocking = false;
   var activeSlide = 0;
   var mobileNavQuery = window.matchMedia("(max-width: 760px)");
   var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -297,10 +299,10 @@
     });
   }
 
-  function playConfettiSound() {
+  function playConfettiSound(force) {
     var now = Date.now();
 
-    if (now - lastConfettiSoundAt < 500) {
+    if (!force && now - lastConfettiSoundAt < 500) {
       return;
     }
 
@@ -308,6 +310,55 @@
     playSoundAsset("confetti", function () {
       synthPremiumTick(5);
     });
+  }
+
+  function unlockConfettiAudio(event) {
+    if (confettiAudioUnlocked || confettiAudioUnlocking) {
+      return;
+    }
+
+    if (event.target.closest && event.target.closest(".release-pill")) {
+      confettiAudioUnlocked = true;
+      return;
+    }
+
+    var player = soundPlayers.confetti;
+
+    if (!player) {
+      return;
+    }
+
+    confettiAudioUnlocking = true;
+    player.volume = 0;
+    player.currentTime = 0;
+
+    try {
+      var playback = player.play();
+
+      if (playback && playback.then) {
+        playback
+          .then(function () {
+            player.pause();
+            player.currentTime = 0;
+            player.volume = 1;
+            confettiAudioUnlocked = true;
+            confettiAudioUnlocking = false;
+          })
+          .catch(function () {
+            player.volume = 1;
+            confettiAudioUnlocking = false;
+          });
+      } else {
+        player.pause();
+        player.currentTime = 0;
+        player.volume = 1;
+        confettiAudioUnlocked = true;
+        confettiAudioUnlocking = false;
+      }
+    } catch (error) {
+      player.volume = 1;
+      confettiAudioUnlocking = false;
+    }
   }
 
   function createPremiumBurst(trigger) {
@@ -544,8 +595,22 @@
   }
 
   if (releasePill) {
-    releasePill.addEventListener("pointerenter", playConfettiSound);
-    releasePill.addEventListener("focus", playConfettiSound);
+    releasePill.addEventListener("pointerenter", function () {
+      playConfettiSound(false);
+    });
+    releasePill.addEventListener("focus", function () {
+      playConfettiSound(false);
+    });
+    releasePill.addEventListener("pointerdown", function () {
+      confettiAudioUnlocked = true;
+      playConfettiSound(true);
+    });
+    releasePill.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        confettiAudioUnlocked = true;
+        playConfettiSound(true);
+      }
+    });
   }
 
   premiumFeatures.forEach(function (feature, featureIndex) {
@@ -626,6 +691,9 @@
       { once: true, passive: true }
     );
   });
+
+  window.addEventListener("pointerdown", unlockConfettiAudio, true);
+  window.addEventListener("keydown", unlockConfettiAudio, true);
 
   window.addEventListener(
     "scroll",
