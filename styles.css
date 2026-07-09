@@ -2941,10 +2941,12 @@ main {
 .docs-content {
   display: grid;
   gap: 0;
+  min-width: 0;
 }
 
 .docs-content section {
   border-bottom: 1px solid var(--surface-border);
+  min-width: 0;
   padding: 0 0 52px;
 }
 
@@ -3725,6 +3727,7 @@ main {
   .docs-content section {
     padding-bottom: 28px;
     scroll-margin-top: 122px;
+    width: 100%;
   }
 
   .docs-content section + section {
@@ -3745,6 +3748,8 @@ main {
   .docs-content p {
     font-size: 14px;
     line-height: 1.62;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .docs-content ul,
@@ -3752,6 +3757,7 @@ main {
     gap: 8px;
     margin-top: 14px;
     padding-left: 19px;
+    max-width: 100%;
   }
 
   .docs-content li {
@@ -3775,6 +3781,8 @@ main {
     max-width: 100%;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
+    table-layout: fixed;
+    width: 100%;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -3782,7 +3790,7 @@ main {
   .docs-content table tbody {
     display: table;
     table-layout: fixed;
-    width: 620px;
+    width: 100%;
   }
 
   .docs-content th,
