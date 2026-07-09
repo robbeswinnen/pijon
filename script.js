@@ -371,6 +371,14 @@
     previousMascotPosition = nextPosition;
     window.clearTimeout(mascotHideTimer);
     mascot.className = "mascot-peek " + positions[nextPosition];
+    var mascotImage = mascot.querySelector("img");
+    var usesFullBody = positions[nextPosition].indexOf("side") !== -1;
+
+    mascotImage.src = usesFullBody
+      ? "./assets/mascot/mascot-side.png"
+      : "./assets/mascot/mascot-peek.png";
+    mascotImage.width = 512;
+    mascotImage.height = usesFullBody ? 625 : 414;
 
     window.requestAnimationFrame(function () {
       mascot.classList.add("is-visible");

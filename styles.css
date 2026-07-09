@@ -227,6 +227,7 @@ img {
   left: 0;
   top: 54vh;
   transform: translate3d(-112%, -50%, 0);
+  width: clamp(76px, 6vw, 96px);
 }
 
 .mascot-peek-side-left.is-visible {
@@ -237,6 +238,7 @@ img {
   right: 0;
   top: 38vh;
   transform: translate3d(112%, -50%, 0);
+  width: clamp(76px, 6vw, 96px);
 }
 
 .mascot-peek-side-right.is-visible {
@@ -255,6 +257,123 @@ img {
 
   48% {
     transform: translateY(-3px) scaleX(var(--mascot-flip));
+  }
+}
+
+.error-body {
+  overflow: hidden;
+}
+
+.error-shell {
+  background: linear-gradient(90deg, var(--section-start), var(--section-end));
+  height: 100svh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.error-page {
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(0, 160, 255, 0.08), transparent 52%),
+    linear-gradient(90deg, var(--section-start), var(--section-end));
+  color: var(--text);
+  display: grid;
+  gap: 72px;
+  grid-template-columns: minmax(0, 1fr) 190px;
+  height: 100svh;
+  height: 100dvh;
+  margin: 0 auto;
+  max-width: 1120px;
+  padding: 80px 48px 0;
+  position: relative;
+}
+
+.error-copy {
+  max-width: 660px;
+}
+
+.error-code {
+  color: var(--accent);
+  font-size: clamp(88px, 12vw, 164px);
+  font-weight: 700;
+  line-height: 0.8;
+  margin: 0 0 30px;
+}
+
+.error-copy h1 {
+  color: var(--text);
+  font-size: clamp(36px, 5vw, 62px);
+  line-height: 1.02;
+  margin: 0 0 18px;
+}
+
+.error-copy > p:not(.error-code) {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0 0 30px;
+  max-width: 520px;
+}
+
+.error-home {
+  align-items: center;
+  background: var(--text);
+  border-radius: 6px;
+  color: var(--surface-strong);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 9px;
+  min-height: 48px;
+  padding: 0 20px;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.error-home:hover,
+.error-home:focus-visible {
+  box-shadow: 0 14px 28px rgba(0, 30, 54, 0.18);
+  transform: translateY(-2px);
+}
+
+.error-mascot {
+  filter: drop-shadow(0 18px 26px rgba(0, 30, 54, 0.18));
+  height: auto;
+  justify-self: center;
+  width: min(100%, 176px);
+}
+
+@media (max-width: 760px) {
+  .error-page {
+    align-content: center;
+    display: grid;
+    gap: 0;
+    grid-template-columns: 1fr;
+    padding: 86px 24px 24px;
+  }
+
+  .error-copy {
+    align-self: center;
+    padding-bottom: 70px;
+  }
+
+  .error-code {
+    margin-bottom: 22px;
+  }
+
+  .error-copy > p:not(.error-code) {
+    font-size: 15px;
+    margin-bottom: 24px;
+    max-width: 310px;
+  }
+
+  .error-mascot {
+    bottom: 18px;
+    position: absolute;
+    right: 20px;
+    width: 82px;
   }
 }
 
