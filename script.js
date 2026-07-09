@@ -12,6 +12,7 @@
   var coreMore = document.querySelector(".tag-more");
   var coreTagList = document.querySelector("#core-extra-tags");
   var coreExtraTags = Array.prototype.slice.call(document.querySelectorAll(".core-extra-tag"));
+  var releasePill = document.querySelector(".release-pill");
   var premiumTrigger = document.querySelector(".premium-trigger");
   var homeBrand = document.querySelector(".site-header .brand");
   var premiumFeatures = Array.prototype.slice.call(document.querySelectorAll(".premium-feature"));
@@ -35,6 +36,7 @@
   var mascotPeek = null;
   var mascotHideTimer = null;
   var previousMascotPosition = -1;
+  var lastConfettiSoundAt = 0;
   var activeSlide = 0;
   var mobileNavQuery = window.matchMedia("(max-width: 760px)");
   var reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -127,7 +129,7 @@
   }
 
   function preloadSounds() {
-    ["switch", "premium", "tick"].forEach(function (name) {
+    ["switch", "premium", "tick", "confetti"].forEach(function (name) {
       if (!soundPlayers[name]) {
         soundPlayers[name] = new Audio("./assets/sounds/" + name + ".wav");
         soundPlayers[name].preload = "auto";
@@ -292,6 +294,19 @@
   function playPremiumTick(index) {
     playSoundAsset("tick", function () {
       synthPremiumTick(index);
+    });
+  }
+
+  function playConfettiSound() {
+    var now = Date.now();
+
+    if (now - lastConfettiSoundAt < 500) {
+      return;
+    }
+
+    lastConfettiSoundAt = now;
+    playSoundAsset("confetti", function () {
+      synthPremiumTick(5);
     });
   }
 
@@ -526,6 +541,11 @@
     homeBrand.addEventListener("blur", function () {
       hideMascotPeek(180);
     });
+  }
+
+  if (releasePill) {
+    releasePill.addEventListener("pointerenter", playConfettiSound);
+    releasePill.addEventListener("focus", playConfettiSound);
   }
 
   premiumFeatures.forEach(function (feature, featureIndex) {
