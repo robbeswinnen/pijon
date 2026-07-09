@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pijon studio integrity dashboard placeholder." />
+    <meta name="theme-color" content="#57c9e0" />
+    <title>Pijon Studio Dashboard</title>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("pijon-theme");
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          document.documentElement.dataset.theme = saved || preferred;
+        } catch (error) {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" />
+    <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=dashboard-placeholder" />
+    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+  </head>
+  <body class="dashboard-body">
+    <div class="dashboard-shell">
+      <aside class="dashboard-sidebar" aria-label="Studio navigation">
+        <button class="dashboard-sidebar-close" type="button" aria-label="Close dashboard navigation"><i class="ri-close-line" aria-hidden="true"></i></button>
+        <a class="dashboard-brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
+        <div class="studio-picker">
+          <i class="ri-building-4-line" aria-hidden="true"></i>
+          <span>Northstar Games</span>
+          <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+        </div>
+        <nav class="dashboard-nav" aria-label="Dashboard sections">
+          <a class="is-active" href="#overview"><i class="ri-dashboard-line" aria-hidden="true"></i><span>Overview</span></a>
+          <a href="#reviews"><i class="ri-shield-check-line" aria-hidden="true"></i><span>Review queue</span><b>12</b></a>
+          <a href="#signals"><i class="ri-radar-line" aria-hidden="true"></i><span>Signals</span></a>
+          <a href="#reports"><i class="ri-file-chart-line" aria-hidden="true"></i><span>Reports</span></a>
+          <a href="#settings"><i class="ri-settings-3-line" aria-hidden="true"></i><span>Settings</span></a>
+        </nav>
+        <div class="dashboard-sidebar-foot">
+          <a href="./documentation.html"><i class="ri-book-open-line" aria-hidden="true"></i><span>Documentation</span></a>
+          <a href="./index.html#top"><i class="ri-logout-box-r-line" aria-hidden="true"></i><span>Back to site</span></a>
+        </div>
+      </aside>
+
+      <main class="dashboard-main" id="overview">
+        <header class="dashboard-topbar">
+          <button class="dashboard-menu" type="button" aria-label="Toggle dashboard navigation"><i class="ri-menu-line" aria-hidden="true"></i></button>
+          <div class="dashboard-breadcrumb"><span>Northstar Games</span><i class="ri-arrow-right-s-line" aria-hidden="true"></i><strong>Integrity overview</strong></div>
+          <div class="dashboard-actions">
+            <button class="dashboard-icon-button" type="button" aria-label="Notifications"><i class="ri-notification-3-line" aria-hidden="true"></i><span></span></button>
+            <button class="dashboard-icon-button theme-toggle" type="button" aria-label="Switch to dark mode"><i class="ri-moon-line" aria-hidden="true"></i></button>
+            <a class="dashboard-profile" href="./login.html" aria-label="Studio profile"><span>NG</span><i class="ri-arrow-down-s-line" aria-hidden="true"></i></a>
+          </div>
+        </header>
+
+        <div class="dashboard-content">
+          <div class="dashboard-heading">
+            <div>
+              <span class="eyebrow">Demo workspace</span>
+              <h1>Integrity overview</h1>
+              <p>Test data for a healthy competitive season. Connect your game to replace this sample workspace.</p>
+            </div>
+            <a class="dashboard-primary-action" href="./documentation.html#quickstart"><i class="ri-plug-2-line" aria-hidden="true"></i> Connect a game</a>
+          </div>
+
+          <section class="dashboard-kpis" aria-label="Integrity statistics">
+            <article><span>Matches monitored</span><strong>18,492</strong><small><i class="ri-arrow-up-line" aria-hidden="true"></i> 12.4% this week</small></article>
+            <article><span>Actions blocked</span><strong>2,184</strong><small><i class="ri-arrow-up-line" aria-hidden="true"></i> 8.1% this week</small></article>
+            <article><span>Reviews waiting</span><strong>12</strong><small class="neutral"><i class="ri-time-line" aria-hidden="true"></i> Oldest: 18 min</small></article>
+            <article><span>False-positive rate</span><strong>0.12%</strong><small><i class="ri-arrow-down-line" aria-hidden="true"></i> 0.03% this week</small></article>
+          </section>
+
+          <section class="dashboard-grid" aria-label="Dashboard details">
+            <article class="dashboard-panel integrity-panel">
+              <div class="panel-heading">
+                <div><h2>Integrity pulse</h2><p>Confirmed signals over the last 7 days.</p></div>
+                <div class="range-control" role="group" aria-label="Chart range"><button class="is-active" type="button" data-dashboard-range>7d</button><button type="button" data-dashboard-range>30d</button><button type="button" data-dashboard-range>90d</button></div>
+              </div>
+              <div class="chart-wrap" aria-label="Signal activity chart">
+                <div class="chart-axis"><span>160</span><span>120</span><span>80</span><span>40</span><span>0</span></div>
+                <div class="chart-bars"><i style="--bar: 30%"></i><i style="--bar: 46%"></i><i style="--bar: 39%"></i><i style="--bar: 67%"></i><i style="--bar: 54%"></i><i style="--bar: 82%"></i><i style="--bar: 62%"></i></div>
+                <div class="chart-days"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+              </div>
+              <div class="chart-legend"><span><i></i> Action Gate</span><span><i></i> Trace</span><span><i></i> Core</span></div>
+            </article>
+
+            <article class="dashboard-panel posture-panel">
+              <div class="panel-heading"><div><h2>Studio posture</h2><p>Current protection coverage.</p></div><span class="posture-score">92<small>/100</small></span></div>
+              <div class="posture-ring"><span>Strong</span></div>
+              <ul class="coverage-list"><li><span><i class="ri-checkbox-circle-fill" aria-hidden="true"></i> Core integrity</span><strong>Active</strong></li><li><span><i class="ri-checkbox-circle-fill" aria-hidden="true"></i> Server enforcement</span><strong>Active</strong></li><li><span><i class="ri-alert-fill" aria-hidden="true"></i> Account link review</span><strong>Improve</strong></li></ul>
+            </article>
+
+            <article class="dashboard-panel queue-panel" id="reviews">
+              <div class="panel-heading"><div><h2>Review queue</h2><p>Evidence ready for a human decision.</p></div><a href="#reviews">View all <i class="ri-arrow-right-line" aria-hidden="true"></i></a></div>
+              <div class="review-list">
+                <button class="review-row" type="button"><span class="severity high">High</span><div><strong>Player 8F2A</strong><small>Impossible movement · Match #08431</small></div><time>4m</time><i class="ri-arrow-right-s-line" aria-hidden="true"></i></button>
+                <button class="review-row" type="button"><span class="severity medium">Medium</span><div><strong>Player B11C</strong><small>Account overlap · Match #08428</small></div><time>12m</time><i class="ri-arrow-right-s-line" aria-hidden="true"></i></button>
+                <button class="review-row" type="button"><span class="severity high">High</span><div><strong>Player 97E0</strong><small>Aim anomaly · Match #08420</small></div><time>18m</time><i class="ri-arrow-right-s-line" aria-hidden="true"></i></button>
+              </div>
+            </article>
+
+            <article class="dashboard-panel signal-panel" id="signals">
+              <div class="panel-heading"><div><h2>Live signals</h2><p>Latest detections entering Pijon.</p></div><span class="live-status"><i></i> Live</span></div>
+              <ul class="signal-list"><li><i class="ri-shield-check-line" aria-hidden="true"></i><div><strong>Session trust verified</strong><small>eu-west · 2 seconds ago</small></div></li><li><i class="ri-speed-up-line" aria-hidden="true"></i><div><strong>Movement limit blocked</strong><small>Match #08431 · 1 minute ago</small></div></li><li><i class="ri-radar-line" aria-hidden="true"></i><div><strong>Trace evidence updated</strong><small>Player 97E0 · 3 minutes ago</small></div></li></ul>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

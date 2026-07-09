@@ -29,6 +29,13 @@
   var checkoutPlanInterval = document.querySelector("[data-checkout-interval]");
   var checkoutPlanCapacity = document.querySelector("[data-checkout-capacity]");
   var checkoutStatus = document.querySelector(".checkout-status");
+  var loginForm = document.querySelector(".login-form");
+  var loginStatus = document.querySelector(".login-status");
+  var dashboardMenu = document.querySelector(".dashboard-menu");
+  var dashboardClose = document.querySelector(".dashboard-sidebar-close");
+  var dashboardRangeButtons = Array.prototype.slice.call(
+    document.querySelectorAll("[data-dashboard-range]")
+  );
   var audioContext = null;
   var soundPlayers = {};
   var hapticsReady = false;
@@ -642,6 +649,42 @@
       }
     });
   }
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (loginStatus) {
+        loginStatus.textContent = "Opening the demo workspace...";
+      }
+      triggerHaptic(10);
+      window.setTimeout(function () {
+        window.location.href = "./dashboard.html";
+      }, 320);
+    });
+  }
+
+  if (dashboardMenu) {
+    dashboardMenu.addEventListener("click", function () {
+      document.body.classList.toggle("dashboard-nav-open");
+      triggerHaptic(8);
+    });
+  }
+
+  if (dashboardClose) {
+    dashboardClose.addEventListener("click", function () {
+      document.body.classList.remove("dashboard-nav-open");
+      triggerHaptic(8);
+    });
+  }
+
+  dashboardRangeButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      dashboardRangeButtons.forEach(function (item) {
+        item.classList.toggle("is-active", item === button);
+      });
+      triggerHaptic(6);
+    });
+  });
 
   if (navToggle) {
     navToggle.addEventListener("click", function () {
