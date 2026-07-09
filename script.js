@@ -13,6 +13,7 @@
   var coreTagList = document.querySelector("#core-extra-tags");
   var coreExtraTags = Array.prototype.slice.call(document.querySelectorAll(".core-extra-tag"));
   var releasePill = document.querySelector(".release-pill");
+  var docsMobileIndex = document.querySelector(".docs-mobile-index");
   var premiumTrigger = document.querySelector(".premium-trigger");
   var homeBrand = document.querySelector(".site-header .brand");
   var premiumFeatures = Array.prototype.slice.call(document.querySelectorAll(".premium-feature"));
@@ -299,10 +300,10 @@
     });
   }
 
-  function playConfettiSound(force) {
+  function playConfettiSound() {
     var now = Date.now();
 
-    if (!force && now - lastConfettiSoundAt < 500) {
+    if (now - lastConfettiSoundAt < 500) {
       return;
     }
 
@@ -314,11 +315,6 @@
 
   function unlockConfettiAudio(event) {
     if (confettiAudioUnlocked || confettiAudioUnlocking) {
-      return;
-    }
-
-    if (event.target.closest && event.target.closest(".release-pill")) {
-      confettiAudioUnlocked = true;
       return;
     }
 
@@ -596,20 +592,10 @@
 
   if (releasePill) {
     releasePill.addEventListener("pointerenter", function () {
-      playConfettiSound(false);
+      playConfettiSound();
     });
     releasePill.addEventListener("focus", function () {
-      playConfettiSound(false);
-    });
-    releasePill.addEventListener("pointerdown", function () {
-      confettiAudioUnlocked = true;
-      playConfettiSound(true);
-    });
-    releasePill.addEventListener("keydown", function (event) {
-      if (event.key === "Enter" || event.key === " ") {
-        confettiAudioUnlocked = true;
-        playConfettiSound(true);
-      }
+      playConfettiSound();
     });
   }
 
@@ -680,6 +666,14 @@
       }
     });
   });
+
+  if (docsMobileIndex) {
+    Array.prototype.slice.call(docsMobileIndex.querySelectorAll("a")).forEach(function (link) {
+      link.addEventListener("click", function () {
+        docsMobileIndex.removeAttribute("open");
+      });
+    });
+  }
 
   ["pointerdown", "touchstart", "keydown"].forEach(function (eventName) {
     window.addEventListener(
