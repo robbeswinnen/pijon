@@ -23,14 +23,11 @@
   var premiumViews = Array.prototype.slice.call(
     document.querySelectorAll("[data-premium-panel]")
   );
-  var checkoutForm = document.querySelector(".checkout-form");
   var checkoutPlanName = document.querySelector("[data-checkout-plan]");
   var checkoutPlanPrice = document.querySelector("[data-checkout-price]");
   var checkoutPlanInterval = document.querySelector("[data-checkout-interval]");
   var checkoutPlanCapacity = document.querySelector("[data-checkout-capacity]");
-  var checkoutStatus = document.querySelector(".checkout-status");
-  var loginForm = document.querySelector(".login-form");
-  var loginStatus = document.querySelector(".login-status");
+  var previewAccessLink = document.querySelector("[data-preview-access]");
   var dashboardMenu = document.querySelector(".dashboard-menu");
   var dashboardClose = document.querySelector(".dashboard-sidebar-close");
   var dashboardRangeButtons = Array.prototype.slice.call(
@@ -632,40 +629,20 @@
     });
   });
 
-  if (checkoutForm) {
-    checkoutForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      playPremiumTick(3);
-      triggerHaptic(15);
-      if (checkoutStatus) {
-        checkoutStatus.textContent =
-          "Your plan is ready. Connect a Stripe Checkout URL here before accepting payments.";
-      }
-    });
-  }
-
-  if (loginForm) {
-    loginForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      var requestedNext = new URLSearchParams(window.location.search).get("next");
-      var allowedDestinations = ["dashboard.html", "technical-docs.html"];
-      var destination = allowedDestinations.indexOf(requestedNext) !== -1
-        ? requestedNext
-        : "dashboard.html";
+  if (previewAccessLink) {
+    var requestedPreview = new URLSearchParams(window.location.search).get("next");
+    var previewDestinations = ["dashboard.html", "technical-docs.html"];
+    var previewDestination = previewDestinations.indexOf(requestedPreview) !== -1
+      ? requestedPreview
+      : "dashboard.html";
+    previewAccessLink.href = "./" + previewDestination;
+    previewAccessLink.addEventListener("click", function () {
       try {
         sessionStorage.setItem("pijon-demo-auth", "true");
       } catch (error) {
-        destination = "dashboard.html";
-      }
-      if (loginStatus) {
-        loginStatus.textContent = destination === "technical-docs.html"
-          ? "Opening studio documentation..."
-          : "Opening the demo workspace...";
+        return;
       }
       triggerHaptic(10);
-      window.setTimeout(function () {
-        window.location.href = "./" + destination;
-      }, 320);
     });
   }
 

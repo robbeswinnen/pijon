@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Complete your Pijon subscription." />
+    <meta name="description" content="Preview Pijon subscription plans. Online checkout is not yet available." />
     <meta name="theme-color" content="#57c9e0" />
-    <title>Pijon Checkout</title>
+    <title>Pijon Plan Preview</title>
     <script>
       (function () {
         try {
@@ -21,7 +21,7 @@
     </script>
     <link href="./assets/fonts/poppins.css" rel="stylesheet" />
     <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=product-pass" />
+    <link rel="stylesheet" href="./styles.css?v=cloudflare-review" />
     <link rel="icon" href="./assets/favicon/pijon-favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png" />
   </head>
@@ -71,39 +71,25 @@
           </a>
         </section>
 
-        <form class="checkout-form">
-          <h2>Studio details</h2>
-          <label>
-            Studio name
-            <input name="studio" autocomplete="organization" required />
-          </label>
-          <label>
-            Work email
-            <input name="email" type="email" autocomplete="email" required />
-          </label>
-          <div class="checkout-fields">
-            <label>
-              Country
-              <input name="country" autocomplete="country-name" required />
-            </label>
-            <label>
-              VAT number
-              <input name="vat" autocomplete="off" />
-            </label>
+        <section class="checkout-preview" aria-labelledby="checkout-preview-title">
+          <div class="checkout-preview-icon"><i class="ri-tools-line" aria-hidden="true"></i></div>
+          <span>Checkout preview</span>
+          <h2 id="checkout-preview-title">Online purchasing is not active yet.</h2>
+          <p>
+            This page does not collect studio, billing, tax, account, or payment information.
+            Production subscriptions will use a verified payment provider when Pijon is ready.
+          </p>
+          <ul>
+            <li><i class="ri-checkbox-circle-line" aria-hidden="true"></i>No payment will be taken</li>
+            <li><i class="ri-checkbox-circle-line" aria-hidden="true"></i>No account will be created</li>
+            <li><i class="ri-checkbox-circle-line" aria-hidden="true"></i>No visitor information is submitted</li>
+          </ul>
+          <div class="checkout-preview-actions">
+            <a href="./premium.html"><i class="ri-arrow-left-line" aria-hidden="true"></i>Back to pricing</a>
+            <a href="mailto:hello@pijon.example?subject=Pijon%20Pilot%20Request">Request pilot information<i class="ri-arrow-right-line" aria-hidden="true"></i></a>
           </div>
-          <label class="checkout-consent">
-            <input name="terms" type="checkbox" required />
-            <span>
-              I agree to the <a href="./terms-of-service.html">Terms</a> and
-              <a href="./privacy-policy.html">Privacy Policy</a>.
-            </span>
-          </label>
-          <button type="submit">
-            Continue to secure payment
-            <i class="ri-lock-line" aria-hidden="true"></i>
-          </button>
-          <p class="checkout-status" role="status" aria-live="polite"></p>
-        </form>
+          <small>Pricing shown on this prototype is illustrative until commercial launch.</small>
+        </section>
       </main>
     </div>
     <script src="./script.js"></script>
