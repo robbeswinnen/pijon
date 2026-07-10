@@ -425,9 +425,7 @@
   function showMascotPeek() {
     var positions = [
       "mascot-peek-bottom-left",
-      "mascot-peek-bottom-right",
-      "mascot-peek-side-left",
-      "mascot-peek-side-right"
+      "mascot-peek-bottom-right"
     ];
     var nextPosition = Math.floor(Math.random() * positions.length);
     var mascot = ensureMascotPeek();
@@ -441,13 +439,9 @@
     window.clearTimeout(mascotHideTimer);
     mascot.className = "mascot-peek " + positions[nextPosition];
     var mascotImage = mascot.querySelector("img");
-    var usesFullBody = positions[nextPosition].indexOf("side") !== -1;
-
-    mascotImage.src = usesFullBody
-      ? "./assets/mascot/mascot-side.png"
-      : "./assets/mascot/mascot-peek.png";
+    mascotImage.src = "./assets/mascot/mascot-peek.png";
     mascotImage.width = 512;
-    mascotImage.height = usesFullBody ? 625 : 414;
+    mascotImage.height = 414;
 
     window.requestAnimationFrame(function () {
       mascot.classList.add("is-visible");
@@ -653,12 +647,24 @@
   if (loginForm) {
     loginForm.addEventListener("submit", function (event) {
       event.preventDefault();
+      var requestedNext = new URLSearchParams(window.location.search).get("next");
+      var allowedDestinations = ["dashboard.html", "technical-docs.html"];
+      var destination = allowedDestinations.indexOf(requestedNext) !== -1
+        ? requestedNext
+        : "dashboard.html";
+      try {
+        sessionStorage.setItem("pijon-demo-auth", "true");
+      } catch (error) {
+        destination = "dashboard.html";
+      }
       if (loginStatus) {
-        loginStatus.textContent = "Opening the demo workspace...";
+        loginStatus.textContent = destination === "technical-docs.html"
+          ? "Opening studio documentation..."
+          : "Opening the demo workspace...";
       }
       triggerHaptic(10);
       window.setTimeout(function () {
-        window.location.href = "./dashboard.html";
+        window.location.href = "./" + destination;
       }, 320);
     });
   }

@@ -3,441 +3,115 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Pijon documentation and product updates." />
+    <meta name="description" content="A beginner-friendly introduction to Pijon and mobile game integrity." />
     <meta name="theme-color" content="#57c9e0" />
-    <title>Pijon Documentation</title>
+    <title>Learn about Pijon</title>
     <script>
       (function () {
         try {
           var saved = localStorage.getItem("pijon-theme");
-          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
+          var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
           document.documentElement.dataset.theme = saved || preferred;
-        } catch (error) {
-          document.documentElement.dataset.theme = "light";
-        }
+        } catch (error) { document.documentElement.dataset.theme = "light"; }
       })();
     </script>
     <link href="./assets/fonts/poppins.css" rel="stylesheet" />
     <link href="./assets/remixicon/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=mobile-docs-fit" />
-    <link rel="icon" href="./assets/feature-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css?v=product-pass" />
+    <link rel="icon" href="./assets/favicon/pijon-favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png" />
   </head>
   <body class="docs-body">
     <div class="site-shell docs-shell">
       <header class="site-header nav-collapsed" aria-label="Primary navigation">
         <a class="brand" href="./index.html#top" aria-label="Pijon home">pijon</a>
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-controls="nav-tabs"
-          aria-expanded="false"
-          aria-label="Show navigation links"
-        >
-          <i class="nav-toggle-arrow ri-arrow-down-s-line" aria-hidden="true"></i>
-          <i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i>
-        </button>
-        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections">
-          <a href="./index.html#features">Features</a>
-          <a href="./premium.html">Pricing</a>
-        </nav>
+        <button class="nav-toggle" type="button" aria-controls="nav-tabs" aria-expanded="false" aria-label="Show navigation links"><i class="nav-toggle-arrow ri-arrow-down-s-line" aria-hidden="true"></i><i class="nav-toggle-menu ri-menu-3-line" aria-hidden="true"></i></button>
+        <nav class="nav-tabs" id="nav-tabs" aria-label="Sections"><a href="./index.html#features">Features</a><a href="./premium.html">Pricing</a></nav>
         <div class="header-actions">
-          <a class="icon-button premium-trigger" href="./premium.html" aria-label="Premium features">
-            <i class="ri-vip-crown-fill" aria-hidden="true"></i>
-          </a>
-          <a class="icon-button" href="./support.html" aria-label="Support">
-            <i class="ri-lifebuoy-line" aria-hidden="true"></i>
-          </a>
-          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode">
-            <i class="ri-moon-line" aria-hidden="true"></i>
-          </button>
-          <a class="icon-button" href="./login.html" aria-label="Login">
-            <i class="ri-login-box-fill" aria-hidden="true"></i>
-          </a>
+          <a class="icon-button premium-trigger" href="./premium.html" aria-label="Premium features"><i class="ri-vip-crown-fill" aria-hidden="true"></i></a>
+          <a class="icon-button" href="./support.html" aria-label="Support"><i class="ri-lifebuoy-line" aria-hidden="true"></i></a>
+          <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark mode"><i class="ri-moon-line" aria-hidden="true"></i></button>
+          <a class="icon-button" href="./login.html" aria-label="Login"><i class="ri-login-box-fill" aria-hidden="true"></i></a>
         </div>
       </header>
 
       <main class="docs-page" id="top">
         <details class="docs-mobile-index">
-          <summary>
-            <i class="ri-list-check-2" aria-hidden="true"></i>
-            On this page
-            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
-          </summary>
-          <nav aria-label="Mobile documentation sections">
-            <a href="#overview">Overview</a>
-            <a href="#architecture">Architecture</a>
-            <a href="#quickstart">Quickstart</a>
-            <a href="#core">Core</a>
-            <a href="#gate">Gate</a>
-            <a href="#trace">Trace</a>
-            <a href="#evidence">Evidence</a>
-            <a href="#webhooks">Webhooks</a>
-            <a href="#security">Security</a>
-            <a href="#operations">Operations</a>
-            <a href="#updates">Changelog</a>
-            <a href="#studio-access">Studio access</a>
-          </nav>
+          <summary><i class="ri-compass-3-line" aria-hidden="true"></i>Explore this guide<i class="ri-arrow-down-s-line" aria-hidden="true"></i></summary>
+          <nav aria-label="Mobile guide sections"><a href="#start">Start here</a><a href="#layers">Three layers</a><a href="#decisions">Decisions</a><a href="#studios">For studios</a><a href="#players">For players</a><a href="#glossary">Glossary</a></nav>
         </details>
-        <aside class="docs-index" aria-label="Documentation sections">
-          <h1>Documentation</h1>
-          <a href="#overview" aria-current="page">Overview</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#quickstart">Quickstart</a>
-          <a href="#core">Core</a>
-          <a href="#gate">Gate</a>
-          <a href="#trace">Trace</a>
-          <a href="#evidence">Evidence</a>
-          <a href="#webhooks">Webhooks</a>
-          <a href="#security">Security</a>
-          <a href="#operations">Operations</a>
-          <a href="#updates">Changelog</a>
-          <a href="#studio-access">Studio access</a>
+        <aside class="docs-index" aria-label="Guide sections">
+          <h1>Learn Pijon</h1>
+          <a href="#start" aria-current="page">Start here</a>
+          <a href="#problem">The problem</a>
+          <a href="#layers">Core, Gate and Trace</a>
+          <a href="#decisions">How decisions work</a>
+          <a href="#studios">What studios get</a>
+          <a href="#players">What players should know</a>
+          <a href="#glossary">Simple glossary</a>
+          <a href="./changelog.html">Product changelog</a>
+          <a href="./login.html?next=technical-docs.html">Studio documentation <i class="ri-lock-line" aria-hidden="true"></i></a>
         </aside>
 
-        <article class="docs-content">
-          <section id="overview">
-            <span>Overview</span>
-            <h2>Build fair play into every match</h2>
-            <p>
-              Pijon is a mobile-native anti-cheat platform for studios that need reliable signals,
-              server-authoritative enforcement, and evidence a human reviewer can understand. It
-              combines three layers: Core verifies the environment, Gate validates live actions,
-              and Trace studies behavior over time.
-            </p>
-            <p>
-              This public guide documents the integration model and operational concepts. Exact
-              detection thresholds, model weights, policy tuning, and incident playbooks are
-              available only inside authenticated studio workspaces.
-            </p>
-            <div class="docs-callout">
-              <i class="ri-information-line" aria-hidden="true"></i>
-              <div>
-                <strong>Designed for reviewable decisions</strong>
-                <p>
-                  Pijon produces evidence and confidence signals. Studios remain responsible for
-                  player-facing actions, appeals, and compliance with local law and platform rules.
-                </p>
-              </div>
-            </div>
+        <article class="docs-content public-guide">
+          <section id="start">
+            <span>Start here</span>
+            <h2>What is Pijon?</h2>
+            <p>Pijon helps mobile game studios spot unfair play, understand what happened, and make better decisions without treating every unusual moment as proof of cheating.</p>
+            <p>It connects information from the game app, the studio’s own servers, and patterns across multiple matches. The result is a clear case a person can review, rather than a mysterious score with no explanation.</p>
+            <div class="docs-callout"><i class="ri-lightbulb-flash-line" aria-hidden="true"></i><div><strong>Think of Pijon as an investigation assistant</strong><p>It watches for warning signs, gathers context, and points reviewers toward the strongest evidence. The studio remains in control of bans, appeals, and player communication.</p></div></div>
           </section>
 
-          <section id="architecture">
-            <span>Architecture</span>
-            <h2>One pipeline, three layers of trust</h2>
-            <p>
-              The client SDK collects integrity receipts and approved telemetry. Your game server
-              attaches authoritative match context. Pijon evaluates both sources, returns decisions
-              to your enforcement layer, and stores reviewable evidence according to your retention
-              policy.
-            </p>
+          <section id="problem">
+            <span>The problem</span>
+            <h2>Cheating rarely looks obvious</h2>
+            <p>A player moving too quickly might be cheating, but they might also be experiencing lag. A sudden improvement in aim may be suspicious, or it may simply be a skilled player on a good day. Acting on one strange moment can punish innocent players.</p>
+            <h3>Pijon asks three questions</h3>
             <ol class="docs-steps">
-              <li>
-                <strong>Collect</strong>
-                The SDK creates a session and sends signed integrity and device signals.
-              </li>
-              <li>
-                <strong>Validate</strong>
-                Gate compares player actions with server-authoritative rules before they affect play.
-              </li>
-              <li>
-                <strong>Correlate</strong>
-                Trace compares behavior across matches, devices, accounts, and skill baselines.
-              </li>
-              <li>
-                <strong>Review</strong>
-                Evidence is grouped into cases with reasons, confidence, and relevant match context.
-              </li>
+              <li><strong>Can this game session be trusted?</strong><span>Was the game changed or running in an unsafe environment?</span></li>
+              <li><strong>Was this action possible?</strong><span>Could the movement, shot, or inventory change happen under the game’s rules?</span></li>
+              <li><strong>Does the behavior form a pattern?</strong><span>Does it remain unusual across enough matches and comparable players?</span></li>
             </ol>
-            <table>
-              <thead>
-                <tr>
-                  <th>Component</th>
-                  <th>Runs in</th>
-                  <th>Primary responsibility</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mobile SDK</td>
-                  <td>Game client</td>
-                  <td>Session integrity and approved telemetry</td>
-                </tr>
-                <tr>
-                  <td>Gate adapter</td>
-                  <td>Game server</td>
-                  <td>Authoritative action validation</td>
-                </tr>
-                <tr>
-                  <td>Pijon API</td>
-                  <td>Managed service</td>
-                  <td>Decisions, evidence, and policy execution</td>
-                </tr>
-                <tr>
-                  <td>Studio console</td>
-                  <td>Web application</td>
-                  <td>Review, appeals, configuration, and audit logs</td>
-                </tr>
-              </tbody>
-            </table>
           </section>
 
-          <section id="quickstart">
-            <span>Quickstart</span>
-            <h2>Integrate in controlled stages</h2>
-            <p>
-              Start in observe-only mode. Confirm session coverage and server timestamps, review
-              sample evidence, then enable assisted or automatic actions only after your team has
-              validated false-positive performance.
-            </p>
-            <pre><code>import { Pijon } from "@pijon/mobile";
-
-const pijon = new Pijon({
-  projectId: "project_live_example",
-  environment: "production"
-});
-
-const session = await pijon.startSession({
-  playerId: authenticatedPlayer.id,
-  matchId: match.id,
-  build: app.buildNumber
-});</code></pre>
-            <h3>Recommended rollout</h3>
-            <ul>
-              <li>Use separate project keys for development, staging, and production.</li>
-              <li>Keep secret keys on trusted servers; never embed them in the mobile client.</li>
-              <li>Run observe-only for representative regions, devices, and skill levels.</li>
-              <li>Define appeal ownership and evidence retention before enabling enforcement.</li>
-              <li>Monitor version coverage so unsupported builds cannot silently bypass checks.</li>
-            </ul>
-          </section>
-
-          <section id="core">
-            <span>Core</span>
-            <h2>Establish whether a session can be trusted</h2>
-            <p>
-              Core evaluates build integrity, runtime state, device trust, and session continuity.
-              It produces signed receipts that can accompany later evidence. A Core signal should
-              be interpreted with match context rather than used as a standalone accusation.
-            </p>
-            <h3>Typical checks</h3>
-            <ul>
-              <li>Build signature and version validation</li>
-              <li>Root, jailbreak, emulator, and unsafe-environment signals</li>
-              <li>Runtime tampering and memory-tool indicators</li>
-              <li>Session replay, signature drift, and receipt freshness</li>
-            </ul>
-            <div class="docs-callout docs-callout-warning">
-              <i class="ri-shield-keyhole-line" aria-hidden="true"></i>
-              <div>
-                <strong>Do not expose secret material</strong>
-                <p>
-                  Client identifiers may be public. Signing secrets, service credentials, and
-                  enforcement keys must remain in server-side secret storage.
-                </p>
-              </div>
+          <section id="layers">
+            <span>How it works</span>
+            <h2>Three layers, one evidence trail</h2>
+            <div class="plain-layer-list">
+              <article><i class="ri-shield-check-line" aria-hidden="true"></i><div><h3>Core checks the environment</h3><p>Core looks for signs that the game build, device, or session has been altered. It helps decide whether later match information can be trusted.</p></div></article>
+              <article><i class="ri-speed-up-line" aria-hidden="true"></i><div><h3>Gate checks live actions</h3><p>Gate compares actions with rules known by the game server. If an action is physically impossible, it can be stopped before it affects the match.</p></div></article>
+              <article><i class="ri-route-line" aria-hidden="true"></i><div><h3>Trace studies behavior over time</h3><p>Trace looks for repeated patterns involving aim, awareness, skill changes, or linked accounts. This is Pijon’s main layer for finding evidence that one match cannot prove.</p></div></article>
             </div>
           </section>
 
-          <section id="gate">
-            <span>Gate</span>
-            <h2>Reject impossible actions before they matter</h2>
-            <p>
-              Gate runs alongside your authoritative game server. It checks movement, fire rate,
-              hit registration, cooldowns, inventory changes, and other game-specific invariants.
-              Each rule receives server timestamps and state snapshots so decisions remain
-              reproducible during review.
-            </p>
-            <pre><code>const decision = await pijon.gate.evaluate({
-  sessionId,
-  action: "weapon.fire",
-  serverTime,
-  state: authoritativeState,
-  payload: actionPayload
-});
-
-if (decision.action === "reject") {
-  return rejectPlayerAction(decision.reasonCode);
-}</code></pre>
-            <p>
-              Use stable reason codes in player-facing systems. Internal evidence can contain more
-              detail, but messages shown to players should avoid disclosing rules that could be
-              reverse-engineered.
-            </p>
+          <section id="decisions">
+            <span>Fair decisions</span>
+            <h2>From signal to human review</h2>
+            <p>A signal is a reason to look closer, not an automatic accusation. Pijon groups related signals with match context and explains why a case became more or less suspicious.</p>
+            <table><thead><tr><th>Stage</th><th>What it means</th></tr></thead><tbody><tr><td>Observe</td><td>Something unusual happened, but more context is needed.</td></tr><tr><td>Review</td><td>Enough related evidence exists for a trained person to inspect.</td></tr><tr><td>Decide</td><td>The studio confirms, dismisses, or continues observing the case.</td></tr><tr><td>Appeal</td><td>The player can challenge an action according to the studio’s policy.</td></tr></tbody></table>
+            <div class="docs-callout docs-callout-warning"><i class="ri-scales-3-line" aria-hidden="true"></i><div><strong>False positives matter</strong><p>Pijon is designed to reduce confidence when data is incomplete and to keep serious decisions reviewable. No anti-cheat system should promise perfection.</p></div></div>
           </section>
 
-          <section id="trace">
-            <span>Trace</span>
-            <h2>Find patterns a single match cannot prove</h2>
-            <p>
-              Trace is Pijon’s main behavioral layer. It studies aim consistency, awareness,
-              impossible information use, coordinated accounts, repeat pairings, and changes
-              against a player’s own baseline. Trace deliberately requires repeated evidence before
-              recommending serious action.
-            </p>
-            <h3>Behavioral safeguards</h3>
-            <ul>
-              <li>Compare players with appropriate device, region, mode, and skill cohorts.</li>
-              <li>Separate unusual performance from evidence of prohibited assistance.</li>
-              <li>Reduce confidence when telemetry is incomplete or network quality is poor.</li>
-              <li>Route high-impact decisions through review and preserve an appeal path.</li>
-              <li>Recalibrate after game updates that alter movement, recoil, visibility, or input.</li>
-            </ul>
+          <section id="studios">
+            <span>For studios</span>
+            <h2>What a studio can do with Pijon</h2>
+            <ul><li>See whether protection is working across game versions and devices.</li><li>Review the strongest cases first instead of searching raw logs.</li><li>Understand which signals contributed to a recommendation.</li><li>Choose review-first or carefully automated policies.</li><li>Keep an audit history of evidence, decisions, and team actions.</li><li>Measure review volume and false-positive indicators over time.</li></ul>
+            <p>Technical integration guides, service credentials, policy controls, and detailed signal information are available only to authenticated studio members.</p>
+            <a href="./login.html?next=technical-docs.html">Open studio documentation <i class="ri-lock-line" aria-hidden="true"></i></a>
           </section>
 
-          <section id="evidence">
-            <span>Evidence and review</span>
-            <h2>Turn signals into accountable cases</h2>
-            <p>
-              A case groups related signals, match context, rule outcomes, confidence changes, and
-              reviewer actions. Every state transition is recorded in an audit log. Reviewers can
-              confirm, dismiss, escalate, or request more observation without editing the original
-              evidence.
-            </p>
-            <table>
-              <thead>
-                <tr>
-                  <th>Status</th>
-                  <th>Meaning</th>
-                  <th>Typical next step</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Observing</td>
-                  <td>Signals exist but evidence is incomplete</td>
-                  <td>Collect additional matches</td>
-                </tr>
-                <tr>
-                  <td>Review ready</td>
-                  <td>Evidence passed the studio review threshold</td>
-                  <td>Assign an analyst</td>
-                </tr>
-                <tr>
-                  <td>Confirmed</td>
-                  <td>A reviewer approved the case outcome</td>
-                  <td>Apply studio policy</td>
-                </tr>
-                <tr>
-                  <td>Dismissed</td>
-                  <td>Evidence was insufficient or explained</td>
-                  <td>Retain according to policy</td>
-                </tr>
-              </tbody>
-            </table>
+          <section id="players">
+            <span>For players</span>
+            <h2>What Pijon should and should not do</h2>
+            <p>Pijon should help studios protect fair matches while collecting only the information needed for game integrity. It should not secretly decide punishments without studio policy, reveal private detection methods, or remove a meaningful appeal path.</p>
+            <ul><li>The game studio, not Pijon alone, decides what action to take.</li><li>Unusual play is not automatically cheating.</li><li>Evidence should be retained only as long as the studio’s policy requires.</li><li>Players should be able to find the studio’s support and appeal process.</li></ul>
           </section>
 
-          <section id="webhooks">
-            <span>Webhooks</span>
-            <h2>Connect decisions to studio systems</h2>
-            <p>
-              Webhooks notify your backend when cases change state, policies act, or integrations
-              require attention. Verify every signature, reject stale timestamps, and make handlers
-              idempotent because delivery may be retried.
-            </p>
-            <pre><code>{
-  "id": "evt_example",
-  "type": "case.review_ready",
-  "createdAt": "2026-07-08T12:00:00Z",
-  "projectId": "project_live_example",
-  "data": {
-    "caseId": "case_example",
-    "sessionId": "session_example",
-    "confidence": "high"
-  }
-}</code></pre>
-            <ul>
-              <li>Respond with a 2xx status only after durable processing or queueing.</li>
-              <li>Deduplicate events using the event ID.</li>
-              <li>Rotate signing secrets from the authenticated studio console.</li>
-              <li>Alert on repeated failures and pause destructive automation if delivery is stale.</li>
-            </ul>
-          </section>
-
-          <section id="security">
-            <span>Security and privacy</span>
-            <h2>Minimise data and separate responsibilities</h2>
-            <p>
-              Studios generally act as controller for player data and configure Pijon as a
-              processor or service provider, subject to the final contract and deployment. Collect
-              only the signals needed for anti-cheat purposes, document retention, and restrict
-              access by role.
-            </p>
-            <h3>Baseline controls</h3>
-            <ul>
-              <li>TLS in transit and encryption at rest</li>
-              <li>Per-environment API keys with rotation and scoped permissions</li>
-              <li>Role-based access, multifactor authentication, and session expiry</li>
-              <li>Audit logs for configuration, review, export, and enforcement actions</li>
-              <li>Configurable retention and deletion workflows</li>
-              <li>Incident response contacts and breach-notification procedures</li>
-            </ul>
-          </section>
-
-          <section id="operations">
-            <span>Operations</span>
-            <h2>Run anti-cheat as a monitored production system</h2>
-            <p>
-              Assign owners for integration health, policy changes, evidence review, appeals, and
-              incident response. Release game and anti-cheat changes through staging, then monitor
-              device coverage, decision latency, webhook health, review volume, and false-positive
-              indicators.
-            </p>
-            <h3>Suggested service indicators</h3>
-            <ul>
-              <li>Protected sessions as a percentage of eligible sessions</li>
-              <li>Gate decision latency at median and tail percentiles</li>
-              <li>Cases created, confirmed, dismissed, and appealed</li>
-              <li>SDK version and device coverage</li>
-              <li>Webhook delivery success and retry age</li>
-              <li>Policy changes and reviewer actions by role</li>
-            </ul>
-          </section>
-
-          <section id="updates">
-            <span>Latest update</span>
-            <h2>A new Pijon released!</h2>
-            <p>
-              Core integrity receipts, server-side Gate decisions, Trace baselines, evidence
-              workflows, and mobile-native signals are available for pilot integrations.
-            </p>
-            <ul>
-              <li>Added signed session receipts and build-version coverage reporting.</li>
-              <li>Added review-ready case webhooks and idempotent event IDs.</li>
-              <li>Improved account-link evidence and behavior-baseline explanations.</li>
-              <li>Added role-based studio access foundations.</li>
-            </ul>
-          </section>
-
-          <section id="studio-access">
-            <span>Subscriber documentation</span>
-            <h2>Authenticated studio access</h2>
-            <p>
-              Sensitive documentation belongs behind individual accounts, not a shared password.
-              Studio Owners manage billing and membership; Admins configure projects; Developers
-              manage integrations; Analysts review evidence; and Read-only users can inspect
-              approved information without changing policy.
-            </p>
-            <table>
-              <thead>
-                <tr>
-                  <th>Role</th>
-                  <th>Typical access</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Owner</td><td>Billing, contracts, members, and all projects</td></tr>
-                <tr><td>Admin</td><td>Project settings, policies, integrations, and roles</td></tr>
-                <tr><td>Developer</td><td>Keys, SDK setup, webhooks, and technical logs</td></tr>
-                <tr><td>Analyst</td><td>Cases, evidence, review outcomes, and appeals</td></tr>
-                <tr><td>Read only</td><td>Approved dashboards, reports, and audit history</td></tr>
-              </tbody>
-            </table>
-            <a href="mailto:hello@pijon.example?subject=Pijon%20Documentation%20Access">
-              Request access
-              <i class="ri-arrow-right-line" aria-hidden="true"></i>
-            </a>
+          <section id="glossary">
+            <span>Simple glossary</span>
+            <h2>Useful words without the jargon</h2>
+            <table><thead><tr><th>Word</th><th>Plain meaning</th></tr></thead><tbody><tr><td>Signal</td><td>A warning sign that may need more context.</td></tr><tr><td>Evidence</td><td>Signals combined with enough context to support a review.</td></tr><tr><td>False positive</td><td>Legitimate play that was incorrectly treated as suspicious.</td></tr><tr><td>Telemetry</td><td>Information a game records about what happened.</td></tr><tr><td>Server-authoritative</td><td>The studio’s server, rather than the player’s device, is treated as the source of truth.</td></tr><tr><td>Baseline</td><td>A useful comparison built from normal behavior over time.</td></tr></tbody></table>
+            <a href="./changelog.html">See what changed in Pijon <i class="ri-arrow-right-line" aria-hidden="true"></i></a>
           </section>
         </article>
       </main>

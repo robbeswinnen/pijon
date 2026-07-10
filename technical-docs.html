@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex,nofollow" /><meta name="theme-color" content="#061f37" /><title>Pijon Studio Documentation</title>
+    <script>try{if(sessionStorage.getItem("pijon-demo-auth")!=="true"){location.replace("./login.html?next=technical-docs.html")}}catch(e){location.replace("./login.html?next=technical-docs.html")}</script>
+    <link href="./assets/fonts/poppins.css" rel="stylesheet" /><link href="./assets/remixicon/remixicon.css" rel="stylesheet" /><link rel="stylesheet" href="./styles.css?v=product-pass" /><link rel="icon" href="./assets/favicon/pijon-favicon.png" type="image/png" /><link rel="apple-touch-icon" href="./assets/favicon/apple-touch-icon.png" />
+  </head>
+  <body class="restricted-docs-body">
+    <main class="restricted-docs-page">
+      <aside><a class="dashboard-brand" href="./dashboard.html">pijon</a><span>Studio documentation</span><nav><a class="is-active" href="#welcome"><i class="ri-home-5-line"></i> Welcome</a><a href="#setup"><i class="ri-plug-2-line"></i> Integration setup</a><a href="#security"><i class="ri-shield-keyhole-line"></i> Security model</a><a href="#roles"><i class="ri-team-line"></i> Roles and access</a></nav><a href="./documentation.html"><i class="ri-global-line"></i> Public guide</a></aside>
+      <article>
+        <header><div><span>Northstar Games · Demo workspace</span><h1>Studio documentation</h1></div><a href="./dashboard.html"><i class="ri-dashboard-line"></i> Dashboard</a></header>
+        <section id="welcome"><span>Protected workspace preview</span><h2>Technical guidance belongs behind real authentication</h2><p>This page demonstrates the authenticated documentation experience. It intentionally does not contain detection thresholds, model behavior, secret material, enforcement logic, or exploitable implementation details.</p><div class="restricted-warning"><i class="ri-information-line"></i><p>The current static sign-in is a prototype, not a security boundary. Before real confidential documentation is published, this area needs server-validated sessions, role-based access, multifactor authentication, audit logs, and access revocation.</p></div></section>
+        <section id="setup"><span>Integration setup</span><h2>What approved developers will find here</h2><div class="restricted-grid"><article><i class="ri-smartphone-line"></i><h3>Client SDK</h3><p>Platform requirements, installation, approved telemetry, and release checks.</p></article><article><i class="ri-server-line"></i><h3>Server integration</h3><p>Authenticated requests, action evaluation, retries, and operational health.</p></article><article><i class="ri-webhook-line"></i><h3>Events</h3><p>Webhook verification, event handling, and safe downstream automation.</p></article></div></section>
+        <section id="security"><span>Security model</span><h2>Secrets never belong in public documentation</h2><p>Credentials, signing keys, detailed signal definitions, thresholds, and incident playbooks will be delivered only to authorized roles and recorded in the studio audit trail.</p></section>
+        <section id="roles"><span>Roles and access</span><h2>Give each team member only what they need</h2><table><thead><tr><th>Role</th><th>Documentation access</th></tr></thead><tbody><tr><td>Owner</td><td>Commercial, security, and all technical documentation</td></tr><tr><td>Developer</td><td>SDK, server, events, and integration troubleshooting</td></tr><tr><td>Analyst</td><td>Evidence, review, appeals, and reporting</td></tr><tr><td>Read only</td><td>Approved operational guides and reports</td></tr></tbody></table></section>
+      </article>
+    </main>
+  </body>
+</html>
